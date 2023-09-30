@@ -19,16 +19,10 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class AppComponent {
 
-  public barState = 'start';
-
   widthProgress = 0;
 
   isIndexRoute = false;
-  private loadingSubscription!: Subscription;
-  public isLoading = false;
 
-  loadingSubscription$!: Observable<boolean>;
-  loading = false;
   loadingProgress = 0;
 
 
@@ -41,14 +35,11 @@ export class AppComponent {
 
     this.loadingBarService.loadingProgress.subscribe(progress => {
       this.loadingProgress = progress;
+      this.cdr.detectChanges();
     });
 
   }
 
-
-  ngOnDestroy() {
-    this.loadingSubscription.unsubscribe();
-  }
 
 }
 

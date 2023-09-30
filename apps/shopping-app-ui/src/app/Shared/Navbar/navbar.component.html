@@ -59,17 +59,20 @@
   </div>
 
 
-  <div *ngIf="showLoginErrorToast" class="fixed-error-toast">
+  <div *ngIf="showLoginErrorToast" class="fixed-message-toast">
 <div class="span4">
       <div class="alert alert-error">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Oh snap!</strong> Change a few things up and try submitting again.
+        <strong>Oh snap!</strong> Invalid credentials...
       </div>
 </div>
   </div>
 
-    <!-- <div [style]="showLoginSuccessToast === true ? 'display:block' : ''" class="span4">
-      <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Well done!</strong> You successfully read this important alert message.
-      </div> -->
+  <div *ngIf="showLoginSuccessToast" class="fixed-message-toast">
+    <div class="span4">
+          <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Logged In !</strong> You are logged in successfully
+          </div>
+    </div>
+      </div>

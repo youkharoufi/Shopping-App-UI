@@ -10,6 +10,7 @@ import { LoginUser } from '../Models/loginUser';
 export class AccountFacade {
 
   error$ = this.store.pipe(select(AccountSelectors.getAccountError));
+  loggedUser$ = this.store.pipe(select(AccountSelectors.getLoggedUser));
 
   constructor(private store: Store<fromAccount.AccountPartialState>) { }
 

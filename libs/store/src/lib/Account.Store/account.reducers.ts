@@ -10,6 +10,7 @@ export interface State extends EntityState<ApplicationUser> {
   selectedId?: string | number;
   loaded: boolean;
   error?: Error;
+  loggedUser?: ApplicationUser;
 }
 
 export interface AccountPartialState {
@@ -22,6 +23,7 @@ export const accountAdapter: EntityAdapter<ApplicationUser> =
 export const initialState: State = accountAdapter.getInitialState({
   // set initial required properties
   loaded: false,
+  loggedUser: undefined
 });
 
 

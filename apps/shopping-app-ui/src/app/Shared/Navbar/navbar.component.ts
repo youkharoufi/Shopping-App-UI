@@ -21,6 +21,8 @@ export class NavbarComponent{
 
   error$ = this.accountFacade.error$;
 
+  loggedUser$ = this.accountFacade.loggedUser$;
+
   showLoginErrorToast = false;
   showLoginSuccessToast = false;
 
@@ -43,19 +45,20 @@ export class NavbarComponent{
     this.error$.subscribe({
       next:(error?: Error | null)=>{
 
-        if(error === null || error === undefined){
-          this.showLoginSuccessToast = true
-          setTimeout(()=>{
-            this.showLoginSuccessToast = false
-          },4000);
-          this.cdr.detectChanges()
-        }else{
+        if(error !== null || error !== undefined){
           this.showLoginErrorToast = true
           setTimeout(()=>{
             this.showLoginErrorToast = false
           },4000);
           this.cdr.detectChanges();
+          return;
         }
+          this.showLoginSuccessToast = true
+          setTimeout(()=>{
+            this.showLoginSuccessToast = false
+          },4000);
+          this.cdr.detectChanges();
+
       }
     })
   }
