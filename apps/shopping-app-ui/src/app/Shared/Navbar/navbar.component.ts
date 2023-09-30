@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { LoginUser } from '@shopping-app-ui/store';
 import { AccountFacade } from 'libs/store/src/lib/Account.Store/account.facade';
+import { ApplicationUser } from 'libs/store/src/lib/Models/applicationUser';
 
 @Component({
   selector: 'shopping-app-ui-navbar',
@@ -42,24 +43,28 @@ export class NavbarComponent{
 
   login(){
     this.accountFacade.login(this.loginUser);
-    this.error$.subscribe({
-      next:(error?: Error | null)=>{
+    this.loggedUser$.subscribe({
+      next:(user?: ApplicationUser)=>{
 
-        if(error !== null || error !== undefined){
-          this.showLoginErrorToast = true
-          setTimeout(()=>{
-            this.showLoginErrorToast = false
-          },4000);
-          this.cdr.detectChanges();
-          return;
-        }
+        if(user){
           this.showLoginSuccessToast = true
           setTimeout(()=>{
             this.showLoginSuccessToast = false
           },4000);
           this.cdr.detectChanges();
+          return;
+        }else{
+          this.showLoginErrorToast = true
+          setTimeout(()=>{
+            this.showLoginErrorToast = false
+          },4000);
+          this.cdr.detectChanges();
+        }
+        }
 
-      }
-    })
+
+
+      })
+
   }
 }

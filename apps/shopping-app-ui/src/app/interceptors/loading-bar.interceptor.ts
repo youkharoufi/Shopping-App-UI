@@ -11,16 +11,24 @@ export class LoadingBarInterceptor implements HttpInterceptor {
   constructor(private loadingService: LoadingService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log("HTTP request initiated", request.url);
+
     this.loadingService.start();
 
     return next.handle(request).pipe(
-      tap(event => {
-        if (event instanceof HttpResponse) {
+      tap(
+        event => {
+          if (event instanceof HttpResponse) {
+            console.log("HTTP response received", request.url);
+            this.loadingService.stop();
+          }
+        },
+        error => {
+          console.log("HTTP request error", request.url, error);
           this.loadingService.stop();
         }
-      }, error => {
-        this.loadingService.stop();
-      })
+      )
     );
   }
+
 }

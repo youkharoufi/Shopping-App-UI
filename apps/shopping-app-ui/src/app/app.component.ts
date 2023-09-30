@@ -1,5 +1,5 @@
 import { LoadingService } from './Services/loading.service';
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, NgZone } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { trigger, state, style, animate, transition } from '@angular/animations';
@@ -26,7 +26,7 @@ export class AppComponent {
   loadingProgress = 0;
 
 
-  constructor(private router: Router, public loadingBarService : LoadingService, private cdr: ChangeDetectorRef) {
+  constructor(private ngZone: NgZone, private router: Router, public loadingBarService : LoadingService, private cdr: ChangeDetectorRef) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.isIndexRoute = event.urlAfterRedirects === '/';
@@ -34,11 +34,13 @@ export class AppComponent {
     });
 
     this.loadingBarService.loadingProgress.subscribe(progress => {
-      this.loadingProgress = progress;
-      this.cdr.detectChanges();
+        this.loadingProgress = progress;
     });
-
+    // If you still need to manually trigger change detection after this:
+    this.cdr.markForCheck();
   }
+
+  
 
 
 }
