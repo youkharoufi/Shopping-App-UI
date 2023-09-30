@@ -1,0 +1,106 @@
+{
+  "name": "shopping-app-ui",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "shopping-app-ui",
+  "sourceRoot": "apps/shopping-app-ui/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/shopping-app-ui",
+        "index": "apps/shopping-app-ui/src/index.html",
+        "main": "apps/shopping-app-ui/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/shopping-app-ui/tsconfig.app.json",
+        "assets": [
+          "apps/shopping-app-ui/src/favicon.ico",
+          "apps/shopping-app-ui/src/assets"
+        ],
+        "styles": [
+          "apps/shopping-app-ui/src/styles.css",
+          "apps/shopping-app-ui/src/assets/bootstrap/css/bootstrap.min.css"
+        ],
+        "scripts": [
+          "apps/shopping-app-ui/src/assets/bootstrap/js/bootstrap.min.js"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "shopping-app-ui:build:production"
+        },
+        "development": {
+          "browserTarget": "shopping-app-ui:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "shopping-app-ui:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/shopping-app-ui/**/*.ts",
+          "apps/shopping-app-ui/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/shopping-app-ui/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "shopping-app-ui:build"
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.fixed-error-toast {
+  position: fixed;
+  top: 10px;        /* 10 pixels from the top */
+  right: 10px;      /* 10 pixels from the right */
+  z-index: 9999;    /* keep the toast above other elements */
+}
+
+.alert.alert-error {
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  /* You can add other styles as you see fit */
+}
