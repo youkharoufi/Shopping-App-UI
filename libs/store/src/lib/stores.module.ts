@@ -1,3 +1,4 @@
+import { MessageService } from 'primeng/api';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AccountFacade } from './Account.Store/account.facade';
@@ -8,6 +9,7 @@ import * as fromAccounts from './Account.Store/account.reducers';
 import { AccountEffects } from './Account.Store/account.effects';
 import { ACCOUNT_API_ENDPOINT } from './Account.Store/account.token';
 import { EffectsModule } from '@ngrx/effects';
+import { PrimeNgZeModule } from '@shopping-app-ui/prime-ng';
 
 @NgModule({
   imports: [CommonModule,
@@ -16,8 +18,10 @@ import { EffectsModule } from '@ngrx/effects';
       fromAccounts.reducer
     ),
     EffectsModule.forFeature([AccountEffects]),
+    PrimeNgZeModule
     ],
     providers: [
+      MessageService,
       { provide: ACCOUNT_API_ENDPOINT, useValue: '' },
     ]
 })

@@ -21,6 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoresModule } from '@shopping-app-ui/store';
 import { LoadingBarInterceptor } from './interceptors/loading-bar.interceptor';
 import { LoadingDirective } from './loading.directive';
+import { PrimeNgZeModule } from '@shopping-app-ui/prime-ng';
+
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { LoadingDirective } from './loading.directive';
     EffectsModule.forRoot([]),
     StoresModule,
     HttpClientModule,
+    PrimeNgZeModule
   ],
   providers: [
     {

@@ -58,8 +58,10 @@
     </div>
   </div>
 
+  <p-toast key="loginSuccess" [life]="5000"></p-toast>
+  <p-toast key="loginFailure" [life]="5000"></p-toast>
 
-  <div *ngIf="showLoginErrorToast && !loggedUserReceived" class="fixed-message-toast">
+  <!-- <div *ngIf="showLoginErrorToast" class="fixed-error-toast">
 <div class="span4">
       <div class="alert alert-error">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -68,11 +70,11 @@
 </div>
   </div>
 
-  <div *ngIf="showLoginSuccessToast && loggedUserReceived" class="fixed-message-toast">
+  <div *ngIf="showLoginSuccessToast" class="fixed-success-toast">
     <div class="span4">
           <div class="alert alert-success">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong>Logged In !</strong> You are logged in successfully
           </div>
     </div>
-      </div>
+      </div> -->

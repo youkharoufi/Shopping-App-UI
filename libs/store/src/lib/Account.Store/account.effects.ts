@@ -7,6 +7,7 @@ import { AccountService } from './account.service';
 import { ApplicationUser } from '../Models/applicationUser';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Action } from '@ngrx/store';
+import { MessageService } from 'primeng/api';
 
 
 @Injectable()
@@ -44,23 +45,23 @@ export class AccountEffects {
       )
   );
 
-//   showLoginError$ = createEffect(() =>
-//   this.actions$.pipe(
-//     ofType(AccountActions.loginAccountFailure),
-//     tap(() => {
-//       this.messageService.add({key:"loginFailure", severity:'error', summary: 'Error', detail: 'Login Failed! Invalid credentials'});
-//     })
-//   ), { dispatch: false }
-// );
+  showLoginError$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(AccountActions.loginAccountFailure),
+    tap(() => {
+      this.messageService.add({key:"loginFailure", severity:'error', summary: 'Error', detail: 'Login Failed! Invalid credentials'});
+    })
+  ), { dispatch: false }
+);
 
-// showLoginSuccess$ = createEffect(() =>
-// this.actions$.pipe(
-//   ofType(AccountActions.loginAccountSuccess),
-//   tap(() => {
-//     this.messageService.add({key:"loginSuccess", severity:'success', summary: 'Success', detail: 'You are logged in successfully !'});
-//   })
-// ), { dispatch: false }
-// );
+showLoginSuccess$ = createEffect(() =>
+this.actions$.pipe(
+  ofType(AccountActions.loginAccountSuccess),
+  tap(() => {
+    this.messageService.add({key:"loginSuccess", severity:'success', summary: 'Success', detail: 'You are logged in successfully !'});
+  })
+), { dispatch: false }
+);
 
 
   register$ = createEffect(() =>
@@ -100,6 +101,6 @@ export class AccountEffects {
 // );
 
 
-  constructor(private actions$: Actions, private backend: AccountService) { }
+  constructor(private actions$: Actions, private backend: AccountService, private messageService : MessageService) { }
 
         }

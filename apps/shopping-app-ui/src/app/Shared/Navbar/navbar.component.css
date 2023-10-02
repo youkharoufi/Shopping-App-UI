@@ -1,4 +1,11 @@
-.fixed-message-toast {
+.fixed-error-toast {
+  position: fixed;
+  top: 10px;        /* 10 pixels from the top */
+  right: 10px;      /* 10 pixels from the right */
+  z-index: 9999;    /* keep the toast above other elements */
+}
+
+.fixed-success-toast {
   position: fixed;
   top: 10px;        /* 10 pixels from the top */
   right: 10px;      /* 10 pixels from the right */

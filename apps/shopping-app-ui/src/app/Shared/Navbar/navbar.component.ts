@@ -26,10 +26,8 @@ export class NavbarComponent{
   error$ = this.accountFacade.error$;
 
   loggedUser$ = this.accountFacade.loggedUser$;
-  loggedUserReceived!:boolean;
+  loggedUserReceived = false;
 
-  showLoginErrorToast = false;
-  showLoginSuccessToast = false;
 
   @Output() dataEmitter = new EventEmitter<boolean>();
 
@@ -52,36 +50,14 @@ export class NavbarComponent{
       this.dataEmitter.emit(this.showLoginModal);
   }
 
-  login(){
+  login() {
     this.accountFacade.login(this.loginUser);
-    this.loggedUser$.subscribe((user?: ApplicationUser) => {
-      if (user) {
-        this.loggedUserReceived = true
-        this.loadingBarService.start();
-        this.showLoginSuccessToast = true;
-        setTimeout(() => {
-          this.showLoginSuccessToast = false;
-          this.loadingBarService.stop();
-          window.location.reload();
-        }, 4000);
-        this.cdr.detectChanges();
-      }
-    });
-
-    if(!this.loggedUserReceived) {
-      // Do something when there's no user
-      this.loadingBarService.start();
-      this.showLoginErrorToast = true;
-      setTimeout(() => {
-        this.showLoginErrorToast = false;
-        this.loadingBarService.stop();
-        window.location.reload();
-      }, 4000);
-      this.cdr.detectChanges();
-    }
     this.showLoginModal = false;
-    this.loggedUserReceived = false;
-
+    this.loadingBarService.start();
+    setTimeout(()=>{
+      this.loadingBarService.stop;
+      window.location.reload();
+    },5000);
   }
 
 }

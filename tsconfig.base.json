@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@shopping-app-ui/pime-ng": ["pime-ng/src/index.ts"],
+      "@shopping-app-ui/prime-ng": ["prime-ng/src/index.ts"],
       "@shopping-app-ui/store": ["libs/store/src/index.ts"],
       "@shopping-app-ui/themes": ["themes/src/index.ts"]
     }
