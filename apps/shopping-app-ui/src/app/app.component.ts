@@ -9,17 +9,8 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   selector: 'shopping-app-ui-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  animations: [
-    trigger('grow', [
-      state('start', style({ width: '0%' })),
-      state('end', style({ width: '100%' })),
-      transition('start => end', animate('4s ease-in'))
-    ])
-  ]
 })
 export class AppComponent {
-
-  widthProgress = 0;
 
   isIndexRoute = false;
 
@@ -40,7 +31,8 @@ export class AppComponent {
     this.cdr.markForCheck();
   }
 
-  
+
+
 
 
 }

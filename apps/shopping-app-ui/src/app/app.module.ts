@@ -1,22 +1,21 @@
 import {
   HTTP_INTERCEPTORS,
-  HttpClient,
   HttpClientModule,
 } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { IndexComponent } from './index/index.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { CarouselComponent } from './carousel/carousel.component';
+import { NavbarComponent } from './Shared/Navbar/navbar.component';
+import { CarouselComponent } from './Carousel/carousel.component';
 import { FooterComponent } from './Shared/Footer/footer.component';
-import { RegisterComponent } from './register/register.component';
-import { SideBarComponent } from './sidebar/side-bar.component';
+import { RegisterComponent } from './Register/register.component';
+import { SideBarComponent } from './SideBar/side-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoresModule } from '@shopping-app-ui/store';

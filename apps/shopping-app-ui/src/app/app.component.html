@@ -11,11 +11,9 @@
 	</div>
 	</div>
 </div>
-</div>
-
-</div>
 <shopping-app-ui-navbar></shopping-app-ui-navbar>
-
+</div>
+</div>
 <ng-container *ngIf="isIndexRoute">
   <shopping-app-ui-carousel></shopping-app-ui-carousel>
 </ng-container>
@@ -33,12 +31,12 @@
 
 <div class="loading-overlay" *ngIf="loadingProgress > 0">
   <div class="span4">
-    <h4>Animated (no IE)</h4><br/>
       <div class="progress progress-striped active">
         <div class="bar" [style.width.%]="loadingProgress"></div>
   </div>
 </div>
 </div>
+
 
 
 

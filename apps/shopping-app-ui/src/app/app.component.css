@@ -15,18 +15,5 @@
 }
 
 
-@keyframes loadingAnimation {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-.bar {
-  width:0%;
-  animation: loadingAnimation 4s ease-in-out forwards;
-}
 
 

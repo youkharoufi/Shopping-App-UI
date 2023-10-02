@@ -6,7 +6,7 @@
     <span class="icon-bar"></span>
   </a>
     <div class="navbar-inner">
-      <a class="brand" href="index.html"><img src="/assets/themes/images/logo.png" alt="Bootsshop"/></a>
+      <a class="brand" ><img src="/assets/themes/images/logo.png" alt="Bootsshop"/></a>
       <form class="form-inline navbar-search" method="post" action="products.html" >
       <input id="srchFld" class="srchTxt" type="text" />
         <select class="srchTxt">
@@ -20,9 +20,9 @@
         <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
       </form>
       <ul id="topMenu" class="nav pull-right">
-     <li class=""><a href="special_offer.html">Specials Offer</a></li>
-     <li class=""><a href="contact.html">Contact</a></li>
-     <li class=""><a (click)="redirectToRegister()">Register</a></li>
+     <li class=""><a>Specials Offer</a></li>
+     <li class=""><a>Contact</a></li>
+     <li class=""><a href="/register">Register</a></li>
      <li class="">
      <a (click)="displayLoginModal()" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
 
@@ -32,16 +32,16 @@
         <h3>Login Block</h3>
         </div>
         <div class="modal-body">
-        <form #loginForm="ngForm" (ngSubmit)="login()" class="form-horizontal loginFrm">
+
+        <form #loginForm="ngForm" (ngSubmit)="login()" class="form-horizontal loginFrm" autocomplete="off">
           <div class="control-group">
-          <input type="text" id="inputEmail" name="email" [(ngModel)]="loginUser.emailOrUserName" #emailOrUserName="ngModel" name="usernameOrEmail" required email placeholder="Email">
-            <span style="color:darkred" *ngIf="emailOrUserName.errors?.['required']">Email Or Username is required</span>
+          <input type="text" [(ngModel)]="loginUser.emailOrUserName" #emailOrUserName="ngModel" name="emailOrUserName" required email placeholder="Email" autocomplete="off">
+            <span style="color:darkred" *ngIf="emailOrUserName.errors?.['required'] && emailOrUserName.touched">&nbsp;&nbsp;*Email Or Username is required</span>
           </div>
 
           <div class="control-group">
-          <input type="password" id="inputPassword" [(ngModel)]="loginUser.password" #password="ngModel" name="usernameOrEmail" required minlength="4" placeholder="Password">
-          <span style="color:darkred" *ngIf="password.errors?.['required']">Password is required to login</span>
-          <span style="color:darkred" *ngIf="password.errors?.['minlength']">Password length must be at least 6 characters (inutile dans le login)</span>
+          <input type="password" [(ngModel)]="loginUser.password" #password="ngModel" name="password" required placeholder="Password" autocomplete="off">
+          <span style="color:darkred" *ngIf="password.errors?.['required'] && password.touched">&nbsp;&nbsp;*Password is required to login</span>
           </div>
           <div class="control-group">
           <label class="checkbox">
@@ -50,7 +50,7 @@
           </div>
         </form>
         <button type="submit" (click)="login()" class="btn btn-success">Sign in</button>
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn" (click)="showLoginModal = false" data-dismiss="modal" aria-hidden="true">Close</button>
         </div>
     </div>
     </li>
@@ -59,7 +59,7 @@
   </div>
 
 
-  <div *ngIf="showLoginErrorToast" class="fixed-message-toast">
+  <div *ngIf="showLoginErrorToast && !loggedUserReceived" class="fixed-message-toast">
 <div class="span4">
       <div class="alert alert-error">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -68,7 +68,7 @@
 </div>
   </div>
 
-  <div *ngIf="showLoginSuccessToast" class="fixed-message-toast">
+  <div *ngIf="showLoginSuccessToast && loggedUserReceived" class="fixed-message-toast">
     <div class="span4">
           <div class="alert alert-success">
             <button type="button" class="close" data-dismiss="alert">&times;</button>

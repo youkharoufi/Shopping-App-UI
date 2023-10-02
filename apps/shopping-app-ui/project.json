@@ -20,11 +20,19 @@
           "apps/shopping-app-ui/src/assets"
         ],
         "styles": [
-          "apps/shopping-app-ui/src/styles.css",
-          "apps/shopping-app-ui/src/assets/bootstrap/css/bootstrap.min.css"
+          "apps/shopping-app-ui/src/assets/bootstrap/css/bootstrap.min.css",
+          "apps/shopping-app-ui/src/assets/themes/css/base.css",
+          "apps/shopping-app-ui/src/assets/themes/css/bootstrap-responsive.min.css",
+          "apps/shopping-app-ui/src/assets/themes/css/font-awesome.css",
+          "apps/shopping-app-ui/src/assets/themes/js/google-code-prettify/prettify.css",
         ],
         "scripts": [
-          "apps/shopping-app-ui/src/assets/bootstrap/js/bootstrap.min.js"
+          "apps/shopping-app-ui/src/assets/bootstrap/js/bootstrap.min.js",
+          "apps/shopping-app-ui/src/assets/themes/js/jquery.js",
+          "apps/shopping-app-ui/src/assets/themes/js/bootstrap.min.js",
+          "apps/shopping-app-ui/src/assets/themes/js/google-code-prettify/prettify.js",
+          "apps/shopping-app-ui/src/assets/themes/js/bootshop.js",
+          "apps/shopping-app-ui/src/assets/themes/js/jquery.lightbox-0.5.js"
         ]
       },
       "configurations": {
