@@ -1,7 +1,4 @@
-import {
-  HTTP_INTERCEPTORS,
-  HttpClientModule,
-} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
@@ -22,7 +19,7 @@ import { StoresModule } from '@shopping-app-ui/store';
 import { LoadingBarInterceptor } from './interceptors/loading-bar.interceptor';
 import { LoadingDirective } from './loading.directive';
 import { PrimeNgZeModule } from '@shopping-app-ui/prime-ng';
-
+import { PasswordValidatorDirective } from './password-validator.directive';
 
 @NgModule({
   declarations: [
@@ -35,6 +32,7 @@ import { PrimeNgZeModule } from '@shopping-app-ui/prime-ng';
     RegisterComponent,
     SideBarComponent,
     LoadingDirective,
+    PasswordValidatorDirective,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +44,7 @@ import { PrimeNgZeModule } from '@shopping-app-ui/prime-ng';
     EffectsModule.forRoot([]),
     StoresModule,
     HttpClientModule,
-    PrimeNgZeModule
+    PrimeNgZeModule,
   ],
   providers: [
     {

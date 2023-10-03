@@ -6,6 +6,7 @@ import * as fromAccount from './account.reducers';
 import * as AccountSelectors from './account.selectors';
 import { LoginUser } from '../Models/loginUser';
 import { filter } from 'rxjs';
+import { RegisterUser } from '../Models/registerUser';
 
 @Injectable({ providedIn: 'root' })
 export class AccountFacade {
@@ -19,7 +20,7 @@ export class AccountFacade {
     this.store.dispatch(loginAccount({loginUser}));
   }
 
-  register(registerUser: FormData) {
+  register(registerUser: RegisterUser) {
     this.store.dispatch(registerAccount({ registerUser }));
   }
 

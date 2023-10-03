@@ -53,9 +53,7 @@ export class NavbarComponent{
   login() {
     this.accountFacade.login(this.loginUser);
     this.showLoginModal = false;
-    this.loadingBarService.start();
     setTimeout(()=>{
-      this.loadingBarService.stop;
       window.location.reload();
     },5000);
   }

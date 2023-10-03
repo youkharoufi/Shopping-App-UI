@@ -1,6 +1,7 @@
 import { createAction, props } from "@ngrx/store";
 import { ApplicationUser } from "../Models/applicationUser";
 import { LoginUser } from "../Models/loginUser";
+import { RegisterUser } from "../Models/registerUser";
 
 
 
@@ -32,7 +33,7 @@ export const loginAccountFailure = createAction(
 
 export const registerAccount = createAction(
   AccountActionsTypes.REGISTER_ACCOUNT,
-  props<{ registerUser: FormData }>()
+  props<{ registerUser: RegisterUser }>()
 );
 
 export const registerAccountSuccess = createAction(

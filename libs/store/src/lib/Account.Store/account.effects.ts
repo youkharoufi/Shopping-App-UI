@@ -91,14 +91,14 @@ this.actions$.pipe(
 //   ), { dispatch: false }
 // );
 
-// showRegisterSuccess$ = createEffect(() =>
-//   this.actions$.pipe(
-//     ofType(AccountActions.registerAccountSuccess),
-//     tap(() => {
-//       this.messageService.add({key:"registerSuccess", severity:'error', summary: 'Error', detail: 'Registration Failed, please try again later'});
-//     })
-//   ), { dispatch: false }
-// );
+showRegisterSuccess$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(AccountActions.registerAccountSuccess),
+    tap(() => {
+      this.messageService.add({key:"registerSuccess", severity:'success', summary: 'Success', detail: 'You have been registered successfully'});
+    })
+  ), { dispatch: false }
+);
 
 
   constructor(private actions$: Actions, private backend: AccountService, private messageService : MessageService) { }

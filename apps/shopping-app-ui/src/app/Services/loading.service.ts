@@ -27,8 +27,9 @@ start() {
                 this.stop();
             }
 
-            this.loadingProgress.next(currentProgress);
+            //this.loadingProgress.next(currentProgress);
         }, 1000);
+
   }
 }
 
