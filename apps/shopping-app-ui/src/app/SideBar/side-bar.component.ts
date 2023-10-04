@@ -5,4 +5,11 @@ import { Component } from '@angular/core';
   templateUrl: './side-bar.component.html',
   styleUrls: ['./side-bar.component.css'],
 })
-export class SideBarComponent {}
+export class SideBarComponent {
+
+  showClothes = false;
+
+  openSubMenu: number | null = null; // This will keep track of which submenu is open, if any.
+
+
+}
