@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { Product, ProductsFacade } from '@shopping-app-ui/store';
 
 @Component({
@@ -8,7 +8,7 @@ import { Product, ProductsFacade } from '@shopping-app-ui/store';
     './index.component.css'
   ],
 })
-export class IndexComponent implements OnInit{
+export class IndexComponent implements OnInit {
 
   products$ = this.productFacade.products$;
   products: Product[] = [];
@@ -19,7 +19,7 @@ export class IndexComponent implements OnInit{
   productsRow5: Product[] = [];
 
 
-  constructor(private productFacade : ProductsFacade){}
+  constructor(private productFacade : ProductsFacade, private el : ElementRef, private renderer: Renderer2){}
 
   ngOnInit(): void{
     this.productFacade.getAllProducts();
@@ -59,3 +59,4 @@ export class IndexComponent implements OnInit{
 
   }
 }
+
