@@ -4,173 +4,84 @@
 			<h4>Featured Products <small class="pull-right">200+ featured products</small></h4>
 			<div class="row-fluid">
 			<div id="featured" class="carousel slide">
-			<div class="carousel-inner">
-			  <div class="item active">
+			<div  class="carousel-inner" *ngIf="products !== undefined">
+
+        <div class="item">
 			  <ul class="thumbnails">
-				<li class="span3">
-				  <div class="thumbnail">
+				<li *ngFor="let product of productsRow1" class="span3">
+				  <div class="thumbnail" >
 				  <i class="tag"></i>
-					<a href="product_details.html"><img src="/assets/themes/images/products/b1.jpg" alt=""></a>
+					<a href="product_details.html"><img [src]="product.photoUrl1" alt=""></a>
 					<div class="caption">
-					  <h5>Product name</h5>
-					  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
+					  <h5>{{product.productName}}</h5>
+					  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">${{product.price}}</span></h4>
 					</div>
 				  </div>
 				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-				  <i class="tag"></i>
-					<a href="product_details.html"><img src="/assets/themes/images/products/b2.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-				  <i class="tag"></i>
-					<a href="product_details.html"><img src="/assets/themes/images/products/b3.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					   <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-				  <i class="tag"></i>
-					<a href="product_details.html"><img src="/assets/themes/images/products/b4.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					   <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-			  </ul>
+        </ul>
 			  </div>
-			   <div class="item">
+
+			  <div class="item">
 			  <ul class="thumbnails">
-				<li class="span3">
-				  <div class="thumbnail">
+				<li *ngFor="let product of productsRow2" class="span3">
+				  <div class="thumbnail" >
 				  <i class="tag"></i>
-					<a href="product_details.html"><img src="/assets/themes/images/products/5.jpg" alt=""></a>
+					<a href="product_details.html"><img [src]="product.photoUrl1" alt=""></a>
 					<div class="caption">
-					  <h5>Product name</h5>
-					  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
+					  <h5>{{product.productName}}</h5>
+					  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">${{product.price}}</span></h4>
 					</div>
 				  </div>
 				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-				  <i class="tag"></i>
-					<a href="product_details.html"><img src="/assets/themes/images/products/6.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="product_details.html"><img src="/assets/themes/images/products/7.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					   <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="product_details.html"><img src="/assets/themes/images/products/8.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					   <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-			  </ul>
+        </ul>
 			  </div>
-			   <div class="item">
-			  <ul class="thumbnails">
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="product_details.html"><img src="/assets/themes/images/products/9.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="product_details.html"><img src="/assets/themes/images/products/10.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="product_details.html"><img src="/assets/themes/images/products/11.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					   <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="product_details.html"><img src="/assets/themes/images/products/1.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					   <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-			  </ul>
-			  </div>
-			   <div class="item">
-			  <ul class="thumbnails">
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="product_details.html"><img src="/assets/themes/images/products/2.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="product_details.html"><img src="/assets/themes/images/products/3.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="product_details.html"><img src="/assets/themes/images/products/4.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					   <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="product_details.html"><img src="/assets/themes/images/products/5.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					   <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-			  </ul>
-			  </div>
+
+        <div class="item">
+          <ul class="thumbnails">
+          <li *ngFor="let product of productsRow3" class="span3">
+            <div class="thumbnail" >
+            <i class="tag"></i>
+            <a href="product_details.html"><img [src]="product.photoUrl1" alt=""></a>
+            <div class="caption">
+              <h5>{{product.productName}}</h5>
+              <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">${{product.price}}</span></h4>
+            </div>
+            </div>
+          </li>
+          </ul>
+          </div>
+
+
+          <div class="item">
+            <ul class="thumbnails">
+            <li *ngFor="let product of productsRow4" class="span3">
+              <div class="thumbnail" >
+              <i class="tag"></i>
+              <a href="product_details.html"><img [src]="product.photoUrl1" alt=""></a>
+              <div class="caption">
+                <h5>{{product.productName}}</h5>
+                <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">${{product.price}}</span></h4>
+              </div>
+              </div>
+            </li>
+            </ul>
+            </div>
+
+            <div class="item">
+              <ul class="thumbnails" >
+              <li *ngFor="let product of productsRow5" class="span3">
+                <div class="thumbnail" >
+                <i class="tag"></i>
+                <a href="product_details.html"><img [src]="product.photoUrl1" alt=""></a>
+                <div class="caption">
+                  <h5>{{product.productName}}</h5>
+                  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">${{product.price}}</span></h4>
+                </div>
+                </div>
+              </li>
+              </ul>
+              </div>
+
 			  </div>
 			  <a class="left carousel-control" href="#featured" data-slide="prev">‹</a>
 			  <a class="right carousel-control" href="#featured" data-slide="next">›</a>
@@ -179,79 +90,26 @@
 		</div>
 		<h4>Latest Products </h4>
 			  <ul class="thumbnails">
-				<li class="span3">
+				<li *ngFor="let product of products$ | async" class="span3">
 				  <div class="thumbnail">
-					<a  href="product_details.html"><img src="/assets/themes/images/products/6.jpg" alt=""/></a>
+					<a  href="product_details.html"><img [src]="product.photoUrl1" alt=""/></a>
 					<div class="caption">
-					  <h5>Product name</h5>
+					  <h5>{{product.productName}}</h5>
 					  <p>
 						Lorem Ipsum is simply dummy text.
 					  </p>
 
-					  <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+					  <h4 style="text-align:center"><a class="btn" href="product_details.html"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-detailed" viewBox="0 0 16 16">
+              <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5ZM5 7a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2H5Z"/>
+              <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6V4.5ZM1.5 4a.5.5 0 0 0-.5.5v1.05a2.5 2.5 0 0 1 0 4.9v1.05a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1.05a2.5 2.5 0 0 1 0-4.9V4.5a.5.5 0 0 0-.5-.5h-13Z"/>
+            </svg></a> <a class="btn" href="#">Add to <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+              <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+              <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg></a> <a class="btn btn-primary" href="#">${{product.price}}</a></h4>
 					</div>
 				  </div>
 				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a  href="product_details.html"><img src="/assets/themes/images/products/7.jpg" alt=""/></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <p>
-						Lorem Ipsum is simply dummy text.
-					  </p>
-					 <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a  href="product_details.html"><img src="/assets/themes/images/products/8.jpg" alt=""/></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <p>
-						Lorem Ipsum is simply dummy text.
-					  </p>
-					   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a  href="product_details.html"><img src="/assets/themes/images/products/9.jpg" alt=""/></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <p>
-						Lorem Ipsum is simply dummy text.
-					  </p>
-					  <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a  href="product_details.html"><img src="/assets/themes/images/products/10.jpg" alt=""/></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <p>
-						Lorem Ipsum is simply dummy text.
-					  </p>
-					  <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a  href="product_details.html"><img src="/assets/themes/images/products/11.jpg" alt=""/></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <p>
-						Lorem Ipsum is simply dummy text.
-					  </p>
-					   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
-					</div>
-				  </div>
-				</li>
+
 			  </ul>
 
 		</div>
