@@ -16,7 +16,7 @@ This is a frontend application. It works in pair with the ShoppingApp-API which 
 After opening the backend API (ShoppingApp-API) you will have to enter the following commands : ```add-migration FirstMigration``` then ```update-database```
 in the Package Manager Console of Visual Studio 2022. After this just launch the app by clicking on the green triangle button up in the toolbar.
 
-When the API is up and running, You will have to launch the Angular User Interface by typing : nx serve shopping-app-ui in the terminal of Visual Studio Code.
+When the API is up and running, You will have to launch the Angular User Interface by typing : ```nx serve shopping-app-ui``` in the terminal of Visual Studio Code.
 
 
 ## Libraries
