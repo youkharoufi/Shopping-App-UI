@@ -11,10 +11,10 @@
 				<li *ngFor="let product of productsRow1" class="span3">
 				  <div class="thumbnail" >
 				  <i class="tag"></i>
-					<a href="product_details.html"><img [src]="product.photoUrl1" alt=""></a>
+					<a [routerLink]="'product-details/'+product.productId"><img [src]="product.photoUrl1" alt=""></a>
 					<div class="caption">
 					  <h5>{{product.productName}}</h5>
-					  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">${{product.price}}</span></h4>
+					  <h4><a class="btn" [routerLink]="'product-details/'+product.productId">VIEW</a> <span class="pull-right">${{product.price}}</span></h4>
 					</div>
 				  </div>
 				</li>
@@ -26,10 +26,10 @@
 				<li *ngFor="let product of productsRow2" class="span3">
 				  <div class="thumbnail" >
 				  <i class="tag"></i>
-					<a href="product_details.html"><img [src]="product.photoUrl1" alt=""></a>
+					<a [routerLink]="'product-details/'+product.productId"><img [src]="product.photoUrl1" alt=""></a>
 					<div class="caption">
 					  <h5>{{product.productName}}</h5>
-					  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">${{product.price}}</span></h4>
+					  <h4><a class="btn" [routerLink]="'product-details/'+product.productId">VIEW</a> <span class="pull-right">${{product.price}}</span></h4>
 					</div>
 				  </div>
 				</li>
@@ -41,10 +41,10 @@
           <li *ngFor="let product of productsRow3" class="span3">
             <div class="thumbnail" >
             <i class="tag"></i>
-            <a href="product_details.html"><img [src]="product.photoUrl1" alt=""></a>
+            <a [routerLink]="'product-details/'+product.productId"><img [src]="product.photoUrl1" alt=""></a>
             <div class="caption">
               <h5>{{product.productName}}</h5>
-              <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">${{product.price}}</span></h4>
+              <h4><a class="btn" [routerLink]="'product-details/'+product.productId">VIEW</a> <span class="pull-right">${{product.price}}</span></h4>
             </div>
             </div>
           </li>
@@ -57,10 +57,10 @@
             <li *ngFor="let product of productsRow4" class="span3">
               <div class="thumbnail" >
               <i class="tag"></i>
-              <a href="product_details.html"><img [src]="product.photoUrl1" alt=""></a>
+              <a [routerLink]="'product-details/'+product.productId"><img [src]="product.photoUrl1" alt=""></a>
               <div class="caption">
                 <h5>{{product.productName}}</h5>
-                <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">${{product.price}}</span></h4>
+                <h4><a class="btn" [routerLink]="'product-details/'+product.productId">VIEW</a> <span class="pull-right">${{product.price}}</span></h4>
               </div>
               </div>
             </li>
@@ -72,10 +72,10 @@
               <li *ngFor="let product of productsRow5" class="span3">
                 <div class="thumbnail" >
                 <i class="tag"></i>
-                <a href="product_details.html"><img [src]="product.photoUrl1" alt=""></a>
+                <a [routerLink]="'product-details/'+product.productId"><img [src]="product.photoUrl1" alt=""></a>
                 <div class="caption">
                   <h5>{{product.productName}}</h5>
-                  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">${{product.price}}</span></h4>
+                  <h4><a class="btn" [routerLink]="'product-details/'+product.productId">VIEW</a> <span class="pull-right">${{product.price}}</span></h4>
                 </div>
                 </div>
               </li>
@@ -92,14 +92,14 @@
 			  <ul class="thumbnails">
 				<li *ngFor="let product of allProducts" class="span3">
 				  <div class="thumbnail">
-					<a  href="product_details.html"><img [src]="product.photoUrl1" alt=""/></a>
+					<a  [routerLink]="'product-details/'+product.productId"><img [src]="product.photoUrl1" alt=""/></a>
 					<div class="caption">
 					  <h5>{{product.productName}}</h5>
 					  <p>
 						Lorem Ipsum is simply dummy text.
 					  </p>
 
-					  <h4 style="text-align:center"><a class="btn" href="product_details.html"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+					  <h4 style="text-align:center"><a class="btn" [routerLink]="'product-details/'+product.productId"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
               <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
             </svg></a> <a class="btn" href="#">Add to <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">

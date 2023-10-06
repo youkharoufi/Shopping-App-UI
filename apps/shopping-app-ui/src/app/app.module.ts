@@ -20,6 +20,7 @@ import { LoadingBarInterceptor } from './interceptors/loading-bar.interceptor';
 import { LoadingDirective } from './loading.directive';
 import { PrimeNgZeModule } from '@shopping-app-ui/prime-ng';
 import { PasswordValidatorDirective } from './password-validator.directive';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { PasswordValidatorDirective } from './password-validator.directive';
     SideBarComponent,
     LoadingDirective,
     PasswordValidatorDirective,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,
