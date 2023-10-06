@@ -6,6 +6,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
+
 }
 
 .thumbnail {
@@ -21,4 +22,8 @@
   justify-content: space-between;
 }
 
-
+@media (max-width: 1200px) {
+  .span3 .thumbnail {
+    height: 400px;
+  }
+}

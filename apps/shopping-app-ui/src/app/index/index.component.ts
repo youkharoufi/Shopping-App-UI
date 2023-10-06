@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { Product, ProductsFacade } from '@shopping-app-ui/store';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'shopping-app-ui-index',
@@ -18,8 +19,15 @@ export class IndexComponent implements OnInit {
   productsRow4: Product[] = [];
   productsRow5: Product[] = [];
 
+  totalRecords?: number;
+  currentPage = 0;
+  rowsPerPage = 6;
 
-  constructor(private productFacade : ProductsFacade, private el : ElementRef, private renderer: Renderer2){}
+  allProducts:Product[] = [];
+
+
+  constructor(private productFacade : ProductsFacade, private el : ElementRef, private renderer: Renderer2,
+              private changeDetector: ChangeDetectorRef){}
 
   ngOnInit(): void{
     this.productFacade.getAllProducts();
@@ -54,9 +62,34 @@ export class IndexComponent implements OnInit {
         }
 
       }
+    });
+
+    this.products$.subscribe({
+      next: (prods?: Product[]) => {
+        this.totalRecords = prods?.length;
+        this.updateDisplayedUsers();
+
+      },
+    });
+  }
+
+  updateDisplayedUsers() {
+    const start = this.currentPage * this.rowsPerPage;
+
+
+    this.products$.pipe(take(1)).subscribe(prods => {
+      if(prods){
+        this.allProducts = prods!.slice(start, start + this.rowsPerPage);
+      }
+    });
+  }
+
+  paginate(event:any) {
+    this.currentPage = event.page;
+    setTimeout(()=>{
+      this.updateDisplayedUsers();
     })
-
-
+    this.changeDetector.detectChanges();
   }
 }
 
