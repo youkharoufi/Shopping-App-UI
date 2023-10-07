@@ -12,11 +12,24 @@ export enum CartActionsTypes {
   CREATE_CART = '[Cart] Create Cart',
   CREATE_CART_SUCCESS = '[Cart/API] Create Cart Success',
   CREATE_CART_ERROR = '[Cart/API] Create Cart Failure',
+
+  GET_CART_PRODUCT_COUNT = '[Cart] Get Cart Product Count',
+  GET_CART_PRODUCT_COUNT_SUCCESS = '[Cart/API] Get Cart Product Count Success',
+  GET_CART_PRODUCT_COUNT_ERROR = '[Cart/API] Get Cart Product Count Failure',
+
+  ADD_QUANTITY_OF_PRODUCT = '[Cart] Add Cart Product Quantity',
+  ADD_QUANTITY_OF_PRODUCT_SUCCESS = '[Cart/API] Add Cart Product Quantity Success',
+  ADD_QUANTITY_OF_PRODUCT_ERROR = '[Cart/API] Add Cart Product Quantity Failure',
+
+
+
 }
 
 export const getCart = createAction(
-  CartActionsTypes.GET_CART
+  CartActionsTypes.GET_CART,
+  props<{ userId: string }>()
 );
+
 
 export const getCartSuccess = createAction(
   CartActionsTypes.GET_CART_SUCCESS,
@@ -30,7 +43,7 @@ export const getCartFailure = createAction(
 
 export const createCart = createAction(
   CartActionsTypes.CREATE_CART,
-  props<{ productId: string, userId: string }>()
+  props<{ userId: string }>()
 );
 
 export const createCartSuccess = createAction(
@@ -43,3 +56,32 @@ export const createCartFailure = createAction(
   props<{ error: Error | any }>()
 );
 
+export const getCartProductCount = createAction(
+  CartActionsTypes.GET_CART_PRODUCT_COUNT,
+  props<{ userId: string, cartId:number }>()
+);
+
+export const getCartProductCountSuccess = createAction(
+  CartActionsTypes.GET_CART_PRODUCT_COUNT_SUCCESS,
+  props<{ count: number }>()
+);
+
+export const getCartProductCountFailure = createAction(
+  CartActionsTypes.GET_CART_PRODUCT_COUNT_ERROR,
+  props<{ error: Error | any }>()
+);
+
+export const addCartProductQuantity = createAction(
+  CartActionsTypes.ADD_QUANTITY_OF_PRODUCT,
+  props<{ productId:number, userId: string, newQuantity:number }>()
+);
+
+export const addCartProductQuantitySuccess = createAction(
+  CartActionsTypes.ADD_QUANTITY_OF_PRODUCT_SUCCESS,
+  props<{ cart: Cart }>()
+);
+
+export const addCartProductQuantityFailure = createAction(
+  CartActionsTypes.ADD_QUANTITY_OF_PRODUCT_ERROR,
+  props<{ error: Error | any }>()
+);

@@ -3,7 +3,8 @@ import { ApplicationConfig, ChangeDetectorRef, Component, NgZone, OnInit } from 
 import { NavigationEnd, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { ApplicationUser } from '@shopping-app-ui/store';
+import { ApplicationUser, CartFacade, Product } from '@shopping-app-ui/store';
+import { Cart } from 'libs/store/src/lib/Models/cart';
 
 
 @Component({
@@ -19,8 +20,14 @@ export class AppComponent implements OnInit{
 
   user!:ApplicationUser;
 
+  productCount$ = this.cartFacade.count$;
 
-  constructor(private ngZone: NgZone, private router: Router, public loadingBarService : LoadingService, private cdr: ChangeDetectorRef) {
+  productCount= "0" ;
+
+  createdCart$ = this.cartFacade.createdCart$;
+
+  constructor(private ngZone: NgZone, private router: Router, public loadingBarService : LoadingService, private cdr: ChangeDetectorRef,
+              private cartFacade: CartFacade) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.isIndexRoute = event.urlAfterRedirects === '/';
@@ -38,7 +45,28 @@ export class AppComponent implements OnInit{
 
       if(localStorage.getItem('user') !== null){
         this.user = JSON.parse(localStorage.getItem('user')!);
+        this.cartFacade.createCart(this.user.id);
+
+        this.createdCart$.subscribe({
+          next:(value?:Cart)=>{
+            if(value){
+              this.cartFacade.productCount(this.user.id, value!.cartId);
+              this.productCount$.subscribe({
+                next:(count?:number)=>{
+                  if(count) this.productCount = typeof(count) === undefined ? '0' : count?.toString();
+                }
+              })
+            }
+            }
+
+
+        })
       }
+
+
+
+
+
     }
 
 

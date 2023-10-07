@@ -23,7 +23,7 @@
 }
 
 @media (max-width: 1200px) {
-  .span3 .thumbnail {
+  #latestProducts .thumbnail {
     height: 400px;
   }
 }

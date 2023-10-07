@@ -3,6 +3,7 @@ import { RegisterComponent } from './Register/register.component';
 import { IndexComponent } from './index/index.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
+import { AuthGuard } from './auth.guard';
 
 export const appRoutes: Route[] = [
     {path:'', component:IndexComponent},

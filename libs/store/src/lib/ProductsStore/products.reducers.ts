@@ -62,6 +62,22 @@ export const productsReducer = createReducer(
   })),
 
 
+  on(ProductsActions.addToCart, (state, { productId, userId }) => ({
+    ...state,
+    loaded: false,
+    error: undefined,
+    productId,
+    userId
+  })),
+  on(ProductsActions.addToCartSuccess, (state, { cart }) =>
+    ({ ...state, loaded: true, cart })
+  ),
+  on(ProductsActions.addToCartFailure, (state, { error }) => ({
+    ...state,
+    error,
+  })),
+
+
 );
 
 export function reducer(state: State | undefined, action: Action) {

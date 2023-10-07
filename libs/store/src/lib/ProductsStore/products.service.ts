@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, of } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Product } from '../Models/Product';
+import { Cart } from '../Models/cart';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,11 @@ export class ProductService {
   getProductById(productId: string): Observable<Product> {
 
     return this.http.get<Product>(this.baseUrl + "products/get-one-product/"+productId);
+  }
+
+  addToCart(productId: number, userId: string): Observable<Cart> {
+
+    return this.http.post<Cart>(this.baseUrl + "products/add-to-cart/"+productId+"/"+userId, {productId, userId});
   }
 
 

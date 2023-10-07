@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 
-import { getAllProducts, getOneProduct } from './products.actions';
+import { addToCart, getAllProducts, getOneProduct } from './products.actions';
 import * as fromProducts from './products.reducers';
 import * as ProductSelectors from './products.selectors';
 
@@ -19,6 +19,10 @@ export class ProductsFacade {
 
   getOneProduct(productId: string) {
     this.store.dispatch(getOneProduct({ productId }));
+  }
+
+  addToCart(productId: number, userId: string) {
+    this.store.dispatch(addToCart({ productId, userId }));
   }
 
 }

@@ -15,6 +15,10 @@ import * as fromProducts from './ProductsStore/products.reducers';
 import { ProductsEffects } from './ProductsStore/products.effects';
 import { PRODUCT_API_ENDPOINT } from './ProductsStore/products.token';
 
+import * as fromCart from './CartStore/cart.reducers';
+import { CartEffects } from './CartStore/cart.effects';
+import { CART_API_ENDPOINT } from './CartStore/cart.token';
+
 import { PrimeNgZeModule } from '@shopping-app-ui/prime-ng';
 
 @NgModule({
@@ -31,12 +35,19 @@ import { PrimeNgZeModule } from '@shopping-app-ui/prime-ng';
     ),
     EffectsModule.forFeature([ProductsEffects]),
 
+    StoreModule.forFeature(
+      fromCart.CART_FEATURE_KEY,
+      fromCart.reducer
+    ),
+    EffectsModule.forFeature([CartEffects]),
+
     PrimeNgZeModule
     ],
     providers: [
       MessageService,
       { provide: ACCOUNT_API_ENDPOINT, useValue: '' },
       { provide: PRODUCT_API_ENDPOINT, useValue: '' },
+      { provide: CART_API_ENDPOINT, useValue: '' },
     ]
 })
 export class StoresModule {}

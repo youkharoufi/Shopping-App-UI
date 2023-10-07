@@ -12,6 +12,7 @@ export interface State extends EntityState<Cart> {
   error?: Error;
   currentCart?:Cart;
   createdCart?: Cart;
+  count?:number;
 }
 
 export interface CartPartialState {
@@ -27,7 +28,7 @@ export const initialState: State = cartAdapter.getInitialState({
 });
 
 
-export const productsReducer = createReducer(
+export const cartReducer = createReducer(
   initialState,
 
 
@@ -45,11 +46,10 @@ export const productsReducer = createReducer(
   })),
 
 
-  on(CartActions.createCart, (state, { productId, userId }) => ({
+  on(CartActions.createCart, (state, { userId }) => ({
     ...state,
     loaded: false,
     error: undefined,
-    productId,
     userId
   })),
   on(CartActions.createCartSuccess, (state, { createdCart }) =>
@@ -60,9 +60,38 @@ export const productsReducer = createReducer(
     error,
   })),
 
+  on(CartActions.getCartProductCount, (state, { userId, cartId }) =>
+    ({ ...state, loaded: false, error:undefined, userId, cartId })
+  ),
+  on(CartActions.getCartProductCountSuccess, (state, { count }) => ({
+    ...state,
+    count
+  })),
+
+  on(CartActions.getCartProductCountFailure, (state, { error }) => ({
+    ...state,
+    error,
+  })),
+
+  on(CartActions.addCartProductQuantity, (state, { productId, userId, newQuantity }) => ({
+    ...state,
+    loaded: false,
+    error: undefined,
+    productId,
+    userId,
+    newQuantity
+  })),
+  on(CartActions.addCartProductQuantitySuccess, (state, { cart }) =>
+    ({ ...state, loaded: true, cart })
+  ),
+  on(CartActions.addCartProductQuantityFailure, (state, { error }) => ({
+    ...state,
+    error,
+  })),
+
 
 );
 
 export function reducer(state: State | undefined, action: Action) {
-  return productsReducer(state, action);
+  return cartReducer(state, action);
 }
