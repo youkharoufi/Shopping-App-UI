@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, of } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Cart } from '../Models/cart';
+import { CartItems } from '../Models/cartItems';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,11 @@ export class CartService {
   addProductQuantity(productId: number, userId: string, newQuantity:number): Observable<Cart> {
 
     return this.http.post<Cart>(this.baseUrl + "cart/add-quantity-of-a-product/"+productId+"/"+userId+"/"+newQuantity, {productId, userId, newQuantity});
+  }
+
+  getCartItems(cartId:number): Observable<CartItems[]> {
+
+    return this.http.get<CartItems[]>(this.baseUrl + "cart/get-all-cart-items/"+cartId);
   }
 
 

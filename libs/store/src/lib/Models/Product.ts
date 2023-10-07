@@ -1,10 +1,10 @@
 export interface Product{
 
-  productId:number;
+  productId?:number;
   productName?:string;
   description?: string;
   price?: number;
-  quantity?: number;
+  quantity: number;
   photoUrl1?: string;
   photoUrl2?: string;
   photoUrl3?: string;

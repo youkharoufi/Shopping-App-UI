@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product, ProductsFacade } from '@shopping-app-ui/store';
+import { MessageService } from 'primeng/api';
 import { take } from 'rxjs';
 
 @Component({
@@ -11,7 +12,10 @@ import { take } from 'rxjs';
 export class ProductDetailsComponent implements OnInit{
 
   product$ = this.productFacade.getOneProduct$;
-  product ?: Product;
+  product : Product = {
+    quantity:1,
+
+  };
 
   products$ = this.productFacade.products$;
   totalRecords?: number;
@@ -20,7 +24,8 @@ export class ProductDetailsComponent implements OnInit{
 
   allProducts:Product[] = [];
 
-  constructor(private route: ActivatedRoute, private productFacade: ProductsFacade, private changeDetector: ChangeDetectorRef){}
+  constructor(private route: ActivatedRoute, private productFacade: ProductsFacade, private changeDetector: ChangeDetectorRef,
+              private messageService : MessageService){}
 
 
   ngOnInit(): void{
@@ -30,6 +35,7 @@ export class ProductDetailsComponent implements OnInit{
 
         this.product$.subscribe({
           next:(prod?:Product)=>{
+            if(prod)
             this.product = prod;
           }
         })
@@ -65,5 +71,18 @@ export class ProductDetailsComponent implements OnInit{
       this.updateDisplayedUsers();
     })
     this.changeDetector.detectChanges();
+  }
+
+  addToCart(product: Product){
+    if(localStorage.getItem('user') === null){
+      this.messageService.add({key:"addToCartFailure", severity:'warning', summary: 'Warning', detail: 'You have to be signed in before adding a product to your cart'});
+    }else{
+      const user = JSON.parse(localStorage.getItem('user')!)
+      this.productFacade.addToCart(product.productId!, user.id)
+    }
+
+    setTimeout(()=>{
+      window.location.reload();
+    },4000)
   }
 }

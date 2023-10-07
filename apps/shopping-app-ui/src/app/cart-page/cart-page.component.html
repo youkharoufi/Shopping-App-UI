@@ -4,7 +4,10 @@
 		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
 		<li class="active"> SHOPPING CART</li>
     </ul>
-	<h3>  SHOPPING CART [ <small>3 Item(s) </small>]<a href="products.html" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>
+	<h3>  SHOPPING CART [ <small> {{productCount}} </small>]<a href="products.html" class="btn btn-large pull-right"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-backspace" viewBox="0 0 16 16">
+    <path d="M5.83 5.146a.5.5 0 0 0 0 .708L7.975 8l-2.147 2.146a.5.5 0 0 0 .707.708l2.147-2.147 2.146 2.147a.5.5 0 0 0 .707-.708L9.39 8l2.146-2.146a.5.5 0 0 0-.707-.708L8.683 7.293 6.536 5.146a.5.5 0 0 0-.707 0z"/>
+    <path d="M13.683 1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-7.08a2 2 0 0 1-1.519-.698L.241 8.65a1 1 0 0 1 0-1.302L5.084 1.7A2 2 0 0 1 6.603 1h7.08zm-7.08 1a1 1 0 0 0-.76.35L1 8l4.844 5.65a1 1 0 0 0 .759.35h7.08a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1h-7.08z"/>
+  </svg> Continue Shopping </a></h3>
 	<hr class="soft"/>
 
 
@@ -14,61 +17,26 @@
                   <th>Product</th>
                   <th>Description</th>
                   <th>Quantity/Update</th>
-				  <th>Price</th>
-                  <th>Discount</th>
-                  <th>Tax</th>
+				          <th>Price</th>
                   <th>Total</th>
 				</tr>
               </thead>
               <tbody>
-                <tr>
-                  <td> <img width="60" src="themes/images/products/4.jpg" alt=""/></td>
-                  <td>MASSA AST<br/>Color : black, Material : metal</td>
+                <tr *ngFor="let cartItem of (cartItems$ | async)">
+                  <td> <img width="60" [src]=" cartItem.photoUrl" alt=""/></td>
+                  <td>{{cartItem.itemName}}<br/>{{cartItem.description}}</td>
 				  <td>
 					<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
 				  </td>
-                  <td>$120.00</td>
-                  <td>$25.00</td>
-                  <td>$15.00</td>
-                  <td>$110.00</td>
-                </tr>
-				<tr>
-                  <td> <img width="60" src="themes/images/products/8.jpg" alt=""/></td>
-                  <td>MASSA AST<br/>Color : black, Material : metal</td>
-				  <td>
-					<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
-				  </td>
-                  <td>$7.00</td>
-                  <td>--</td>
-                  <td>$1.00</td>
-                  <td>$8.00</td>
-                </tr>
-				<tr>
-                  <td> <img width="60" src="themes/images/products/3.jpg" alt=""/></td>
-                  <td>MASSA AST<br/>Color : black, Material : metal</td>
-				  <td>
-					<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
-				  </td>
-                  <td>$120.00</td>
-                  <td>$25.00</td>
-                  <td>$15.00</td>
-                  <td>$110.00</td>
+                  <td>${{cartItem.itemPrice}}</td>
                 </tr>
 
-                <tr>
+                <tr *ngFor="let cartItem of cartItems$ | async">
                   <td colspan="6" style="text-align:right">Total Price:	</td>
-                  <td> $228.00</td>
+                  <td> ${{cartItem.itemPrice * cartItem.itemQuantity}}</td>
                 </tr>
+
 				 <tr>
-                  <td colspan="6" style="text-align:right">Total Discount:	</td>
-                  <td> $50.00</td>
-                </tr>
-                 <tr>
-                  <td colspan="6" style="text-align:right">Total Tax:	</td>
-                  <td> $31.00</td>
-                </tr>
-				 <tr>
-                  <td colspan="6" style="text-align:right"><strong>TOTAL ($228 - $50 + $31) =</strong></td>
                   <td class="label label-important" style="display:block"> <strong> $155.00 </strong></td>
                 </tr>
 				</tbody>

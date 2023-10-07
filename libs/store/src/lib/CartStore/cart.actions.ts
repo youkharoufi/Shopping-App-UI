@@ -1,5 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 import { Cart } from "../Models/cart";
+import { CartItems } from "../Models/cartItems";
 
 
 
@@ -20,6 +21,10 @@ export enum CartActionsTypes {
   ADD_QUANTITY_OF_PRODUCT = '[Cart] Add Cart Product Quantity',
   ADD_QUANTITY_OF_PRODUCT_SUCCESS = '[Cart/API] Add Cart Product Quantity Success',
   ADD_QUANTITY_OF_PRODUCT_ERROR = '[Cart/API] Add Cart Product Quantity Failure',
+
+  GET_CART_ITEMS = '[Cart] Get Items',
+  GET_CART_ITEMS_SUCCESS = '[Cart/API] Get Items Success',
+  GET_CART_ITEMS_ERROR = '[Cart/API] Get Items Failure',
 
 
 
@@ -83,5 +88,20 @@ export const addCartProductQuantitySuccess = createAction(
 
 export const addCartProductQuantityFailure = createAction(
   CartActionsTypes.ADD_QUANTITY_OF_PRODUCT_ERROR,
+  props<{ error: Error | any }>()
+);
+
+export const getCartItems = createAction(
+  CartActionsTypes.GET_CART_ITEMS,
+  props<{ cartId:number }>()
+);
+
+export const getCartItemsSuccess = createAction(
+  CartActionsTypes.GET_CART_ITEMS_SUCCESS,
+  props<{ cartItems: CartItems[] }>()
+);
+
+export const getCartItemsFailure = createAction(
+  CartActionsTypes.GET_CART_ITEMS_ERROR,
   props<{ error: Error | any }>()
 );

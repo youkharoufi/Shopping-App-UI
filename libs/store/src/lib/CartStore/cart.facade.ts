@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 
 import * as fromCart from './cart.reducers';
 import * as CartSelectors from './cart.selectors';
-import { addCartProductQuantity, createCart, getCart, getCartProductCount } from './cart.actions';
+import { addCartProductQuantity, createCart, getCart, getCartItems, getCartProductCount } from './cart.actions';
 
 @Injectable({ providedIn: 'root' })
 export class CartFacade {
@@ -11,6 +11,7 @@ export class CartFacade {
   currentCart$ = this.store.pipe(select(CartSelectors.getCurrentCart));
   createdCart$ = this.store.pipe(select(CartSelectors.getCreatedCart));
   count$ = this.store.pipe(select(CartSelectors.getCartCount));
+  cartItems$ = this.store.pipe(select(CartSelectors.getCartItems))
 
   constructor(private store: Store<fromCart.CartPartialState>) { }
 
@@ -28,6 +29,10 @@ export class CartFacade {
 
   addProductQuantity(productId: number, userId: string, newQuantity:number) {
     this.store.dispatch(addCartProductQuantity({productId, userId, newQuantity}))
+  }
+
+  getCartItems(cartId:number) {
+    this.store.dispatch(getCartItems({cartId}))
   }
 
 

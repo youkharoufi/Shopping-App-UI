@@ -7,6 +7,10 @@ import { CART_FEATURE_KEY, State, cartAdapter } from './cart.reducers';
 export const getCartState = createFeatureSelector<State>(CART_FEATURE_KEY);
 
 
+export const getCartItems = createSelector(
+  getCartState,
+  (state: State) => state.cartItems
+);
 
 export const getCurrentCart = createSelector(
   getCartState,

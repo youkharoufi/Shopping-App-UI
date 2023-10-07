@@ -6,6 +6,7 @@ import { CartService } from './cart.service';
 import { of } from 'rxjs';
 import { Product } from '../Models/Product';
 import { Cart } from '../Models/cart';
+import { CartItems } from '../Models/cartItems';
 
 
 @Injectable()
@@ -80,6 +81,22 @@ addProductQuantity$ = createEffect(() =>
   )
 );
 
+getCartItems$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(CartActions.getCartItems),
+    switchMap((action) =>
+      this.backend.getCartItems(action.cartId).pipe(
+        map((cartItems: CartItems[]) =>
+        CartActions.getCartItemsSuccess({ cartItems })
+        ),
+        catchError((error) =>
+          of(CartActions.getCartItemsFailure({ error }))
+        )
+
+      )
+    )
+  )
+);
 
 
 

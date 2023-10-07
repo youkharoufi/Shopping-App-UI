@@ -3,6 +3,7 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import * as CartActions from './cart.actions';
 import { createReducer, on, Action } from '@ngrx/store';
 import { Cart } from '../Models/cart';
+import { CartItems } from '../Models/cartItems';
 
 export const CART_FEATURE_KEY = 'cart-key';
 
@@ -13,6 +14,7 @@ export interface State extends EntityState<Cart> {
   currentCart?:Cart;
   createdCart?: Cart;
   count?:number;
+  cartItems?:CartItems[];
 }
 
 export interface CartPartialState {
@@ -85,6 +87,21 @@ export const cartReducer = createReducer(
     ({ ...state, loaded: true, cart })
   ),
   on(CartActions.addCartProductQuantityFailure, (state, { error }) => ({
+    ...state,
+    error,
+  })),
+
+
+  on(CartActions.getCartItems, (state, {cartId}) => ({
+    ...state,
+    loaded: false,
+    error: undefined,
+    cartId
+  })),
+  on(CartActions.getCartItemsSuccess, (state, { cartItems }) =>
+    ({ ...state, loaded: true, cartItems })
+  ),
+  on(CartActions.getCartItemsFailure, (state, { error }) => ({
     ...state,
     error,
   })),

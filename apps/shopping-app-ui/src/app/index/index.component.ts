@@ -100,8 +100,12 @@ export class IndexComponent implements OnInit {
       this.messageService.add({key:"addToCartFailure", severity:'warning', summary: 'Warning', detail: 'You have to be signed in before adding a product to your cart'});
     }else{
       const user = JSON.parse(localStorage.getItem('user')!)
-      this.productFacade.addToCart(product.productId, user.id)
+      this.productFacade.addToCart(product.productId!, user.id)
     }
+
+    setTimeout(()=>{
+      window.location.reload();
+    },4000);
   }
 }
 

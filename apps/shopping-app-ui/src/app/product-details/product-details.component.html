@@ -11,24 +11,6 @@
             <a href="themes/images/products/large/f1.jpg" title="Fujifilm FinePix S2950 Digital Camera">
 				<img [src]="product?.photoUrl1" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera"/>
             </a>
-			<div id="differentview" class="moreOptopm carousel slide">
-                <div class="carousel-inner">
-                  <div class="item active">
-                   <a href="themes/images/products/large/f1.jpg"> <img style="width:29%" src="themes/images/products/large/f1.jpg" alt=""/></a>
-                   <a href="themes/images/products/large/f2.jpg"> <img style="width:29%" src="themes/images/products/large/f2.jpg" alt=""/></a>
-                   <a href="themes/images/products/large/f3.jpg" > <img style="width:29%" src="themes/images/products/large/f3.jpg" alt=""/></a>
-                  </div>
-                  <div class="item">
-                   <a href="themes/images/products/large/f3.jpg" > <img style="width:29%" src="themes/images/products/large/f3.jpg" alt=""/></a>
-                   <a href="themes/images/products/large/f1.jpg"> <img style="width:29%" src="themes/images/products/large/f1.jpg" alt=""/></a>
-                   <a href="themes/images/products/large/f2.jpg"> <img style="width:29%" src="themes/images/products/large/f2.jpg" alt=""/></a>
-                  </div>
-                </div>
-              <!--
-			  <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-              <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
-			  -->
-              </div>
 
 			 <div class="btn-toolbar">
 			  <div class="btn-group">
@@ -57,21 +39,21 @@
 			</div>
 			</div>
 			<div class="span6">
+        <form #detailsForm="ngForm">
 				<h3>{{product?.productName}}</h3>
 				<small>- (14MP, 18x Optical Zoom) 3-inch LCD</small>
 				<hr class="soft"/>
-				<form class="form-horizontal qtyFrm">
 				  <div class="control-group">
 					<label class="control-label"><span>${{product?.price}}</span></label>
 					<div class="controls">
-					<input type="number" class="span1" [(ngModel)]="product!.quantity" placeholder="Qty."/>
-					  <button type="submit" class="btn btn-large btn-primary pull-right"> Add to cart <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+					<input type="number" class="span1" name="productQuantity" [(ngModel)]="product!.quantity" [value]="1" [min]="1" placeholder="Qty."/>
+					  <button type="submit" (click)="addToCart(product!)" class="btn btn-large btn-primary pull-right"> Add to cart <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
               <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
               <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
             </svg></button>
 					</div>
-				  </div>
-				</form>
+				</div>
+        </form>
 
 				<hr class="soft"/>
 				<h4>100 items in stock</h4>
@@ -147,190 +129,10 @@
 				</p>
               </div>
 		<div class="tab-pane fade" id="profile">
-		<div id="myTab" class="pull-right">
-		 <a href="#listView" data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
-		 <a href="#blockView" data-toggle="tab"><span class="btn btn-large btn-primary"><i class="icon-th-large"></i></span></a>
-		</div>
 		<br class="clr"/>
 		<hr class="soft"/>
 		<div class="tab-content">
-			<div class="tab-pane" id="listView">
-				<div class="row">
-					<div class="span2">
-						<img src="themes/images/products/4.jpg" alt=""/>
-					</div>
-					<div class="span4">
-						<h3>New | Available</h3>
-						<hr class="soft"/>
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies -
-						that is why our goods are so popular..
-						</p>
-						<a class="btn btn-small pull-right" href="product_details.html">View Details</a>
-						<br class="clr"/>
-					</div>
-					<div class="span3 alignR">
-					<form class="form-horizontal qtyFrm">
-					<h3> $222.00</h3>
-					<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-					</label><br/>
-					<div class="btn-group">
-					  <a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-					  <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-					 </div>
-						</form>
-					</div>
-			</div>
-			<hr class="soft"/>
-			<div class="row">
-					<div class="span2">
-						<img src="themes/images/products/5.jpg" alt=""/>
-					</div>
-					<div class="span4">
-						<h3>New | Available</h3>
-						<hr class="soft"/>
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies -
-						that is why our goods are so popular..
-						</p>
-						<a class="btn btn-small pull-right" href="product_details.html">View Details</a>
-						<br class="clr"/>
-					</div>
-					<div class="span3 alignR">
-					<form class="form-horizontal qtyFrm">
-						<h3> $222.00</h3>
-						<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-						</label><br/>
-						<div class="btn-group">
-						<a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-						<a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-						</div>
-					</form>
-					</div>
-			</div>
-			<hr class="soft"/>
-			<div class="row">
-					<div class="span2">
-					<img src="themes/images/products/6.jpg" alt=""/>
-					</div>
-					<div class="span4">
-						<h3>New | Available</h3>
-						<hr class="soft"/>
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies -
-						that is why our goods are so popular..
-						</p>
-						<a class="btn btn-small pull-right" href="product_details.html">View Details</a>
-						<br class="clr"/>
-					</div>
-					<div class="span3 alignR">
-					<form class="form-horizontal qtyFrm">
-					<h3> $222.00</h3>
-					<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-					</label><br/>
-				<div class="btn-group">
-				  <a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-				  <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-				 </div>
-						</form>
-					</div>
-			</div>
-			<hr class="soft"/>
-			<div class="row">
-					<div class="span2">
-					<img src="themes/images/products/7.jpg" alt=""/>
-					</div>
-					<div class="span4">
-						<h3>New | Available</h3>
-						<hr class="soft"/>
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies -
-						that is why our goods are so popular..
-						</p>
-						<a class="btn btn-small pull-right" href="product_details.html">View Details</a>
-						<br class="clr"/>
-					</div>
-					<div class="span3 alignR">
-						<form class="form-horizontal qtyFrm">
-						<h3> $222.00</h3>
-						<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-						</label><br/>
-						<div class="btn-group">
-						<a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-						<a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-						</div>
-						</form>
-					</div>
-			</div>
 
-			<hr class="soft"/>
-			<div class="row">
-					<div class="span2">
-					<img src="themes/images/products/8.jpg" alt=""/>
-					</div>
-					<div class="span4">
-						<h3>New | Available</h3>
-						<hr class="soft"/>
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies -
-						that is why our goods are so popular..
-						</p>
-						<a class="btn btn-small pull-right" href="product_details.html">View Details</a>
-						<br class="clr"/>
-					</div>
-					<div class="span3 alignR">
-						<form class="form-horizontal qtyFrm">
-						<h3> $222.00</h3>
-						<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-						</label><br/>
-						<div class="btn-group">
-						<a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-						<a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-						</div>
-						</form>
-					</div>
-			</div>
-			<hr class="soft"/>
-				<div class="row">
-					<div class="span2">
-					<img src="themes/images/products/9.jpg" alt=""/>
-					</div>
-					<div class="span4">
-						<h3>New | Available</h3>
-						<hr class="soft"/>
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies -
-						that is why our goods are so popular..
-						</p>
-						<a class="btn btn-small pull-right" href="product_details.html">View Details</a>
-						<br class="clr"/>
-					</div>
-					<div class="span3 alignR">
-						<form class="form-horizontal qtyFrm">
-						<h3> $222.00</h3>
-						<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-						</label><br/>
-						<div class="btn-group">
-						<a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-						<a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-						</div>
-						</form>
-					</div>
-			</div>
-			<hr class="soft"/>
-		</div>
 			<div class="tab-pane active" id="blockView">
 				<ul class="thumbnails">
 					<li *ngFor="let product of allProducts" class="span3">

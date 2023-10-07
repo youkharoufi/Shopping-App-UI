@@ -1,3 +1,5 @@
+import { CartItems } from "./cartItems";
+
 export interface Cart{
 
   cartId:number;
@@ -5,4 +7,5 @@ export interface Cart{
   productId:number;
   totalPrice:number;
 
+  cartItems?: CartItems[];
 }
