@@ -1,3 +1,13 @@
 input .span1{
   width:10px;
 }
+
+.span3 .thumbnail {
+  height: 300px;
+}
+
+@media (max-width: 1200px) {
+  .span3 .thumbnail {
+    height: 400px;
+  }
+}
