@@ -1,3 +1,6 @@
+## Project type
+This is a frontend user interface that works in pair with the ```Shopping-App-API``` backend API, which means they have to be run simultaneously. Below are the details to how to consume the app : 
+
 ## ✨ How To Use the app ✨
 
 After opening the backend API (ShoppingApp-API) you will have to enter the following commands : ```add-migration FirstMigration``` then ```update-database```
