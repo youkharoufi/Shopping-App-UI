@@ -5,9 +5,10 @@ import { CalendarModule } from 'primeng/calendar';
 import { PaginatorModule } from 'primeng/paginator';
 import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
+import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({
-  imports: [CommonModule, ToastModule, CalendarModule, PaginatorModule, BadgeModule, ButtonModule],
-  exports: [ToastModule, CalendarModule, PaginatorModule, BadgeModule, ButtonModule],
+  imports: [CommonModule, ToastModule, CalendarModule, PaginatorModule, BadgeModule, ButtonModule, CarouselModule],
+  exports: [ToastModule, CalendarModule, PaginatorModule, BadgeModule, ButtonModule, CarouselModule],
 })
 export class PrimeNgZeModule {}

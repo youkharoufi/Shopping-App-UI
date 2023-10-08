@@ -51,7 +51,7 @@ export class ProductsEffects {
     this.actions$.pipe(
       ofType(ProductActions.addToCart),
       switchMap((action) =>
-        this.backend.addToCart(action.productId, action.userId).pipe(
+        this.backend.addToCart(action.productId, action.userId, action.quantity).pipe(
           map((cart: Cart) =>
           ProductActions.addToCartSuccess({ cart })
           ),

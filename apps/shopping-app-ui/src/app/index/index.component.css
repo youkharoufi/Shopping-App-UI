@@ -1,4 +1,9 @@
-.span3 .thumbnail {
+#featuredProducts .thumbnail {
+  height: 300px;
+  width: 170px;
+}
+
+#latestProducts .thumbnail {
   height: 300px;
 }
 

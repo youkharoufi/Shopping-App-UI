@@ -22,6 +22,7 @@ import { PrimeNgZeModule } from '@shopping-app-ui/prime-ng';
 import { PasswordValidatorDirective } from './password-validator.directive';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
+import { ContactComponent } from './Contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { CartPageComponent } from './cart-page/cart-page.component';
     PasswordValidatorDirective,
     ProductDetailsComponent,
     CartPageComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

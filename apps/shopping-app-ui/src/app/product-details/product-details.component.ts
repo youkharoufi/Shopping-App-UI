@@ -22,6 +22,8 @@ export class ProductDetailsComponent implements OnInit{
   currentPage = 0;
   rowsPerPage = 6;
 
+  quantity = 1;
+
   allProducts:Product[] = [];
 
   constructor(private route: ActivatedRoute, private productFacade: ProductsFacade, private changeDetector: ChangeDetectorRef,
@@ -75,10 +77,12 @@ export class ProductDetailsComponent implements OnInit{
 
   addToCart(product: Product){
     if(localStorage.getItem('user') === null){
-      this.messageService.add({key:"addToCartFailure", severity:'warning', summary: 'Warning', detail: 'You have to be signed in before adding a product to your cart'});
+      this.messageService.add({key:"addToCartFailure", severity:'warn', summary: 'Warn', detail: 'You have to be signed in before adding a product to your cart'});
     }else{
-      const user = JSON.parse(localStorage.getItem('user')!)
-      this.productFacade.addToCart(product.productId!, user.id)
+      const user = JSON.parse(localStorage.getItem('user')!);
+
+
+      this.productFacade.addToCart(product.productId!, user.id, this.quantity)
     }
 
     setTimeout(()=>{

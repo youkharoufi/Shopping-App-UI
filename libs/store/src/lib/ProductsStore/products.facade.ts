@@ -21,8 +21,8 @@ export class ProductsFacade {
     this.store.dispatch(getOneProduct({ productId }));
   }
 
-  addToCart(productId: number, userId: string) {
-    this.store.dispatch(addToCart({ productId, userId }));
+  addToCart(productId: number, userId: string, quantity: number) {
+    this.store.dispatch(addToCart({ productId, userId, quantity }));
   }
 
 }

@@ -1,11 +1,15 @@
 
-<!-- Sidebar end=============================================== -->
+<p-toast key="addToCartFailure" [life]="5000"></p-toast>
 	<div class="span9">
     <ul class="breadcrumb">
     <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-    <li><a href="products.html">Products</a> <span class="divider">/</span></li>
+    <li><a routerLink="/">Products</a> <span class="divider">/</span></li>
     <li class="active">product Details</li>
     </ul>
+    <button routerLink="/" class="btn btn-large" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-square" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+    </svg> Back To Main Menu</button>
+
 	<div class="row">
 			<div id="gallery" class="span3">
             <a href="themes/images/products/large/f1.jpg" title="Fujifilm FinePix S2950 Digital Camera">
@@ -46,7 +50,7 @@
 				  <div class="control-group">
 					<label class="control-label"><span>${{product?.price}}</span></label>
 					<div class="controls">
-					<input type="number" class="span1" name="productQuantity" [(ngModel)]="product!.quantity" [value]="1" [min]="1" placeholder="Qty."/>
+					<input type="number" class="span1" name="productQuantity" [(ngModel)]="quantity" [min]="1" placeholder="Qty."/>
 					  <button type="submit" (click)="addToCart(product!)" class="btn btn-large btn-primary pull-right"> Add to cart <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
               <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
               <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>

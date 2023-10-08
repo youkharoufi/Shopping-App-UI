@@ -51,7 +51,7 @@ export const getOneProductFailure = createAction(
 
 export const addToCart = createAction(
   ProductsActionsTypes.ADD_TO_CART,
-  props<{ productId: number, userId: string }>()
+  props<{ productId: number, userId: string, quantity:number }>()
 );
 
 export const addToCartSuccess = createAction(

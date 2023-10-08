@@ -1,8 +1,8 @@
 import { MessageService } from 'primeng/api';
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartFacade, Product, ProductsFacade } from '@shopping-app-ui/store';
-import { take } from 'rxjs';
+import { Subject, take, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'shopping-app-ui-index',
@@ -27,15 +27,38 @@ export class IndexComponent implements OnInit {
 
   allProducts:Product[] = [];
 
+  private destroyed$ = new Subject<void>();
+
+  responsiveOptions: any[] | undefined;
+
 
   constructor(private productFacade : ProductsFacade, private el : ElementRef, private renderer: Renderer2,
               private changeDetector: ChangeDetectorRef, private router : Router, private messageService : MessageService,
               ){}
 
   ngOnInit(): void{
+
+    this.responsiveOptions = [
+      {
+          breakpoint: '1199px',
+          numVisible: 1,
+          numScroll: 1
+      },
+      {
+          breakpoint: '991px',
+          numVisible: 2,
+          numScroll: 1
+      },
+      {
+          breakpoint: '767px',
+          numVisible: 1,
+          numScroll: 1
+      }
+  ];
+
     this.productFacade.getAllProducts();
 
-    this.products$.subscribe({
+    this.products$.pipe(takeUntil(this.destroyed$)).subscribe({
       next:(products?:Product[])=>{
         if(products){
           this.products = products!;
@@ -67,7 +90,7 @@ export class IndexComponent implements OnInit {
       }
     });
 
-    this.products$.subscribe({
+    this.products$.pipe(takeUntil(this.destroyed$)).subscribe({
       next: (prods?: Product[]) => {
         this.totalRecords = prods?.length;
         this.updateDisplayedUsers();
@@ -97,15 +120,21 @@ export class IndexComponent implements OnInit {
 
   addToCart(product: Product){
     if(localStorage.getItem('user') === null){
-      this.messageService.add({key:"addToCartFailure", severity:'warning', summary: 'Warning', detail: 'You have to be signed in before adding a product to your cart'});
+      this.messageService.add({key:"addToCartFailure", severity:'warn', summary: 'Warn', detail: 'You have to be signed in before adding a product to your cart'});
+      return;
     }else{
       const user = JSON.parse(localStorage.getItem('user')!)
-      this.productFacade.addToCart(product.productId!, user.id)
+      this.productFacade.addToCart(product.productId!, user.id, 1)
     }
 
     setTimeout(()=>{
       window.location.reload();
     },2000);
+  }
+
+  ngOnDestroy(): void {
+    this.destroyed$.next();
+    this.destroyed$.complete();
   }
 }
 

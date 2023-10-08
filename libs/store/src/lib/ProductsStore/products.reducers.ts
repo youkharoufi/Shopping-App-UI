@@ -62,12 +62,13 @@ export const productsReducer = createReducer(
   })),
 
 
-  on(ProductsActions.addToCart, (state, { productId, userId }) => ({
+  on(ProductsActions.addToCart, (state, { productId, userId, quantity }) => ({
     ...state,
     loaded: false,
     error: undefined,
     productId,
-    userId
+    userId,
+    quantity
   })),
   on(ProductsActions.addToCartSuccess, (state, { cart }) =>
     ({ ...state, loaded: true, cart })

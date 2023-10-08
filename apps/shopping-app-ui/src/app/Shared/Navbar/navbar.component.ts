@@ -28,6 +28,8 @@ export class NavbarComponent{
   loggedUser$ = this.accountFacade.loggedUser$;
   loggedUserReceived = false;
 
+  menuDisplay = false;
+
 
   @Output() dataEmitter = new EventEmitter<boolean>();
 
@@ -38,6 +40,8 @@ export class NavbarComponent{
       emailOrUserName: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
     });
+
+    if(localStorage.getItem('user') !== null) this.menuDisplay = true
   }
 
 
@@ -55,7 +59,12 @@ export class NavbarComponent{
     this.showLoginModal = false;
     setTimeout(()=>{
       window.location.reload();
-    },5000);
+    },2000);
+  }
+
+  logout(){
+    localStorage.removeItem('user');
+    window.location.reload();
   }
 
 }

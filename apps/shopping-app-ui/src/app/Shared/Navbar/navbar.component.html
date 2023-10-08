@@ -20,11 +20,12 @@
         <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
       </form>
       <ul id="topMenu" class="nav pull-right">
-     <li class=""><a>Specials Offer</a></li>
-     <li class=""><a>Contact</a></li>
-     <li class=""><a href="/register">Register</a></li>
+     <li class=""><a routerLink="/contact" style="color:rgb(213, 209, 209)">Contact</a></li>
+     <li *ngIf="!menuDisplay" class=""><a href="/register">Register</a></li>
      <li class="">
-     <a (click)="displayLoginModal()" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+     <a *ngIf="!menuDisplay" (click)="displayLoginModal()" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+     <a *ngIf="menuDisplay" (click)="logout()" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-error">Logout</span></a>
+
 
      <div id="login" [style]="showLoginModal ? 'display:block;' : 'display:none'"  class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
         <div class="modal-header">

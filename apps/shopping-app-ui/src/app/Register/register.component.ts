@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AccountFacade, RegisterUser } from '@shopping-app-ui/store';
 
 @Component({
@@ -32,7 +33,7 @@ export class RegisterComponent {
 
   registerForm!:NgForm;
 
-  constructor(private accountFacade: AccountFacade){}
+  constructor(private accountFacade: AccountFacade, private router: Router){}
 
 
   ngOnInit(): void{
@@ -47,7 +48,9 @@ export class RegisterComponent {
 
   register(){
     this.accountFacade.register(this.registerUser);
-    window.location.reload();
+    setTimeout(()=>{
+      this.router.navigateByUrl("/");
+    },2000);
   }
 
   checkPasswordsMatch(password: string, passwordConf: string): void {

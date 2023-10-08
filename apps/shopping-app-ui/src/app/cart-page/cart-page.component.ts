@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApplicationUser, CartFacade } from '@shopping-app-ui/store';
 import { Cart } from 'libs/store/src/lib/Models/cart';
 import { CartItems } from 'libs/store/src/lib/Models/cartItems';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'shopping-app-ui-cart-page',
@@ -118,6 +119,8 @@ export class CartPageComponent implements OnInit {
       window.location.reload()
     },2000);
   }
+
+
 }
 
 
