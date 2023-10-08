@@ -19,13 +19,15 @@ in the Package Manager Console of Visual Studio 2022. After this just launch the
 When the API is up and running, You will have to launch the Angular User Interface by typing : ```nx serve shopping-app-ui``` in the terminal of Visual Studio Code.
 
 If you identify as a man, you can login with these credentials : 
-```email: henry@gmail.com
+```
+    email: henry@gmail.com
    (or with username : Henry)
    password:Pa$$w0rd
 ```
 
 If you identify as a woman, you can login with these credentials : 
-```email: estelle@gmail.com
+```
+    email: estelle@gmail.com
    (or with username : Estelle)
    password:Pa$$w0rd
 ```
