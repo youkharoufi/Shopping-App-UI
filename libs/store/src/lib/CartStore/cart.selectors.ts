@@ -12,6 +12,16 @@ export const getCartItems = createSelector(
   (state: State) => state.cartItems
 );
 
+export const getCartTotal = createSelector(
+  getCartState,
+  (state: State) => state.total
+);
+
+export const getCartItem = createSelector(
+  getCartState,
+  (state: State) => state.cartItem
+);
+
 export const getCurrentCart = createSelector(
   getCartState,
   (state: State) => state.currentCart

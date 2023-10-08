@@ -64,13 +64,13 @@ createCount$ = createEffect(() =>
   )
 );
 
-addProductQuantity$ = createEffect(() =>
+changeProductQuantity$ = createEffect(() =>
   this.actions$.pipe(
     ofType(CartActions.addCartProductQuantity),
     switchMap((action) =>
-      this.backend.addProductQuantity(action.productId, action.userId, action.newQuantity).pipe(
-        map((cart: Cart) =>
-        CartActions.addCartProductQuantitySuccess({ cart })
+      this.backend.changeProductQuantity(action.itemId, action.newQuantity).pipe(
+        map((cartItem: CartItems) =>
+        CartActions.addCartProductQuantitySuccess({ cartItem })
         ),
         catchError((error) =>
           of(CartActions.addCartProductQuantityFailure({ error }))
@@ -91,6 +91,23 @@ getCartItems$ = createEffect(() =>
         ),
         catchError((error) =>
           of(CartActions.getCartItemsFailure({ error }))
+        )
+
+      )
+    )
+  )
+);
+
+getCartTotal$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(CartActions.getCartTotal),
+    switchMap((action) =>
+      this.backend.getCartTotal(action.cartId).pipe(
+        map((total: number) =>
+        CartActions.getCartTotalSuccess({ total })
+        ),
+        catchError((error) =>
+          of(CartActions.getCartTotalFailure({ error }))
         )
 
       )

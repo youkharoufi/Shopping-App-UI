@@ -19,6 +19,7 @@
     "@nrwl/nx-cloud": "16.4.0",
     "@nx/angular": "16.9.1",
     "bootstrap": "^3.3.7",
+    "primeicons": "^6.0.1",
     "primeng": "^16.4.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

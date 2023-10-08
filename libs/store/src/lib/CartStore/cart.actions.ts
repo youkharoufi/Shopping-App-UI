@@ -26,7 +26,9 @@ export enum CartActionsTypes {
   GET_CART_ITEMS_SUCCESS = '[Cart/API] Get Items Success',
   GET_CART_ITEMS_ERROR = '[Cart/API] Get Items Failure',
 
-
+  GET_CART_TOTAL = '[Cart] Get Total',
+  GET_CART_TOTAL_SUCCESS = '[Cart/API] Get Total Success',
+  GET_CART_TOTAL_ERROR = '[Cart/API] Get Total Failure',
 
 }
 
@@ -78,12 +80,12 @@ export const getCartProductCountFailure = createAction(
 
 export const addCartProductQuantity = createAction(
   CartActionsTypes.ADD_QUANTITY_OF_PRODUCT,
-  props<{ productId:number, userId: string, newQuantity:number }>()
+  props<{ itemId:number, newQuantity:number }>()
 );
 
 export const addCartProductQuantitySuccess = createAction(
   CartActionsTypes.ADD_QUANTITY_OF_PRODUCT_SUCCESS,
-  props<{ cart: Cart }>()
+  props<{ cartItem: CartItems }>()
 );
 
 export const addCartProductQuantityFailure = createAction(
@@ -103,5 +105,21 @@ export const getCartItemsSuccess = createAction(
 
 export const getCartItemsFailure = createAction(
   CartActionsTypes.GET_CART_ITEMS_ERROR,
+  props<{ error: Error | any }>()
+);
+
+
+export const getCartTotal = createAction(
+  CartActionsTypes.GET_CART_TOTAL,
+  props<{ cartId:number }>()
+);
+
+export const getCartTotalSuccess = createAction(
+  CartActionsTypes.GET_CART_TOTAL_SUCCESS,
+  props<{ total: number }>()
+);
+
+export const getCartTotalFailure = createAction(
+  CartActionsTypes.GET_CART_TOTAL_ERROR,
   props<{ error: Error | any }>()
 );

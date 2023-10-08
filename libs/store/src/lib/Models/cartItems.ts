@@ -7,5 +7,6 @@ itemName:string;
 description:string;
 itemPrice:number;
 itemQuantity:number;
-itemPhotoUrl:string
+itemPhotoUrl:string;
+itemTotal:number;
 }

@@ -30,14 +30,19 @@ export class CartService {
     return this.http.post<Cart>(this.baseUrl + "cart/assign-new-cart-to-user/"+userId, userId);
   }
 
-  addProductQuantity(productId: number, userId: string, newQuantity:number): Observable<Cart> {
+  changeProductQuantity(itemId:number, newQuantity:number): Observable<CartItems> {
 
-    return this.http.post<Cart>(this.baseUrl + "cart/add-quantity-of-a-product/"+productId+"/"+userId+"/"+newQuantity, {productId, userId, newQuantity});
+    return this.http.post<CartItems>(this.baseUrl + "cart/change-quantity-of-a-product/"+itemId+"/"+newQuantity, {itemId, newQuantity});
   }
 
   getCartItems(cartId:number): Observable<CartItems[]> {
 
     return this.http.get<CartItems[]>(this.baseUrl + "cart/get-all-cart-items/"+cartId);
+  }
+
+  getCartTotal(cartId:number): Observable<number> {
+
+    return this.http.get<number>(this.baseUrl + "cart/get-cart-total/"+cartId);
   }
 
 
