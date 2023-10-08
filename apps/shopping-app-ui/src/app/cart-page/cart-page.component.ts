@@ -1,3 +1,4 @@
+import { MessageService } from 'primeng/api';
 import { Component, OnInit } from '@angular/core';
 import { ApplicationUser, CartFacade } from '@shopping-app-ui/store';
 import { Cart } from 'libs/store/src/lib/Models/cart';
@@ -24,7 +25,7 @@ export class CartPageComponent implements OnInit {
   total$ = this.cartFacade.total$;
   total = 0;
 
-  constructor(private cartFacade: CartFacade) {}
+  constructor(private cartFacade: CartFacade, private messageService: MessageService) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('user') !== null) {
@@ -109,7 +110,14 @@ export class CartPageComponent implements OnInit {
       this.total = this.cartItems.reduce((acc, item) => acc + (item.itemQuantity * item.itemPrice), 0);
   }
 
-  // ... (rest of the component code)
+  deleteItem(cartItem: CartItems){
+    this.cartFacade.deleteCartItem(cartItem.itemId);
+    this.messageService.add({key:"deleteCartItem", severity:'warn', summary: 'Warn', detail: 'You have deleted the item from your cart'});
+
+    setTimeout(()=>{
+      window.location.reload()
+    },2000);
+  }
 }
 
 

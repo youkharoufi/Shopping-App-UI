@@ -122,6 +122,21 @@ export const cartReducer = createReducer(
   })),
 
 
+  on(CartActions.deleteCartItem, (state, {itemId}) => ({
+    ...state,
+    loaded: false,
+    error: undefined,
+    itemId
+  })),
+  on(CartActions.deleteCartItemSuccess, (state) =>
+    ({ ...state, loaded: true })
+  ),
+  on(CartActions.deleeCartItemFailure, (state, { error }) => ({
+    ...state,
+    error,
+  })),
+
+
 );
 
 export function reducer(state: State | undefined, action: Action) {

@@ -21,7 +21,6 @@
         ],
         "styles": [
           "apps/shopping-app-ui/src/assets/bootstrap/css/bootstrap.min.css",
-          "apps/shopping-app-ui/src/styles.css",
           "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
           "node_modules/primeng/resources/primeng.min.css",
           "apps/shopping-app-ui/src/assets/themes/css/base.css",

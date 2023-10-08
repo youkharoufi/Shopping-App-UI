@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import * as CartActions from './cart.actions';
 import { CartService } from './cart.service';
 import { of } from 'rxjs';
-import { Product } from '../Models/Product';
 import { Cart } from '../Models/cart';
 import { CartItems } from '../Models/cartItems';
+import { MessageService } from 'primeng/api';
 
 
 @Injectable()
@@ -115,9 +115,26 @@ getCartTotal$ = createEffect(() =>
   )
 );
 
+deleteCartItem$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(CartActions.deleteCartItem),
+    switchMap((action) =>
+      this.backend.deleteCartItem(action.itemId).pipe(
+        map(() =>
+        CartActions.deleteCartItemSuccess()
+        ),
+        catchError((error) =>
+          of(CartActions.deleeCartItemFailure({ error }))
+        )
+
+      )
+    )
+  )
+);
 
 
 
-  constructor(private actions$: Actions, private backend: CartService) { }
+
+  constructor(private actions$: Actions, private backend: CartService, private messageService : MessageService) { }
 
         }

@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 
 import * as fromCart from './cart.reducers';
 import * as CartSelectors from './cart.selectors';
-import { addCartProductQuantity, createCart, getCart, getCartItems, getCartProductCount, getCartTotal } from './cart.actions';
+import { addCartProductQuantity, createCart, deleteCartItem, getCart, getCartItems, getCartProductCount, getCartTotal } from './cart.actions';
 
 @Injectable({ providedIn: 'root' })
 export class CartFacade {
@@ -39,6 +39,10 @@ export class CartFacade {
 
   getCartTotal(cartId:number) {
     this.store.dispatch(getCartTotal({cartId}))
+  }
+
+  deleteCartItem(itemId:number){
+    this.store.dispatch(deleteCartItem({itemId}));
   }
 
 

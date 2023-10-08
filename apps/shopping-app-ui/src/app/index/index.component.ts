@@ -105,7 +105,7 @@ export class IndexComponent implements OnInit {
 
     setTimeout(()=>{
       window.location.reload();
-    },4000);
+    },2000);
   }
 }
 

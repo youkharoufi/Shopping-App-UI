@@ -45,5 +45,10 @@ export class CartService {
     return this.http.get<number>(this.baseUrl + "cart/get-cart-total/"+cartId);
   }
 
+  deleteCartItem(itemId:number) {
+
+    return this.http.delete(this.baseUrl + "cart/delete-cart-item/"+itemId);
+  }
+
 
 }

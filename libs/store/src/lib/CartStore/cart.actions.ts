@@ -30,6 +30,10 @@ export enum CartActionsTypes {
   GET_CART_TOTAL_SUCCESS = '[Cart/API] Get Total Success',
   GET_CART_TOTAL_ERROR = '[Cart/API] Get Total Failure',
 
+  DELETE_CART_ITEM = '[Cart] Delete Cart Item',
+  DELETE_CART_ITEM_SUCCESS = '[Cart/API] Delete Cart Item Success',
+  DELETE_CART_ITEM_ERROR = '[Cart/API] Delete Cart Item Failure',
+
 }
 
 export const getCart = createAction(
@@ -121,5 +125,19 @@ export const getCartTotalSuccess = createAction(
 
 export const getCartTotalFailure = createAction(
   CartActionsTypes.GET_CART_TOTAL_ERROR,
+  props<{ error: Error | any }>()
+);
+
+export const deleteCartItem = createAction(
+  CartActionsTypes.DELETE_CART_ITEM,
+  props<{ itemId:number }>()
+);
+
+export const deleteCartItemSuccess = createAction(
+  CartActionsTypes.DELETE_CART_ITEM_SUCCESS
+);
+
+export const deleeCartItemFailure = createAction(
+  CartActionsTypes.DELETE_CART_ITEM_ERROR,
   props<{ error: Error | any }>()
 );

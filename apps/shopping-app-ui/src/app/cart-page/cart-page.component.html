@@ -1,5 +1,9 @@
 
+<p-toast key="deleteCartItem" [life]="5000"></p-toast>
+
 	<div class="span9">
+
+
     <ul class="breadcrumb">
 		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
 		<li class="active"> SHOPPING CART</li>
@@ -30,7 +34,8 @@
             <input class="span1" style="max-width:64px;" name="quantity" (input)="onQuantityChange($event, cartItem)" [value]="cartItem.itemQuantity" id="appendedInputButtons" size="16" type="number">
 
             <button class="pi pi-arrow-up" (click)="incrementQuantity(cartItem)" style="color: green"></button>
-            <button *ngIf="cartItem.itemQuantity > 1" class="pi pi-arrow-down" (click)="decrementQuantity(cartItem)" style="color: red"></button>
+            <button [disabled]="cartItem.itemQuantity === 1" class="pi pi-arrow-down" (click)="decrementQuantity(cartItem)" style="color: red"></button>
+            <button class="pi pi-trash" (click)="deleteItem(cartItem)" style="color: red"></button>
           </div>
 				  </td>
                   <td>${{cartItem.itemPrice* cartItem.itemQuantity}}</td>
