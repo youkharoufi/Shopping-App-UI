@@ -22,13 +22,13 @@ If you identify as a man, you can login with these credentials :
 ```email: henry@gmail.com
    (or with username : Henry)
    password:Pa$$w0rd
-````
+```
 
 If you identify as a woman, you can login with these credentials : 
 ```email: estelle@gmail.com
    (or with username : Estelle)
    password:Pa$$w0rd
-````
+```
 
 You can only start shopping when you are logged in.
 
