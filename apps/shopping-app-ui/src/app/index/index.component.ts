@@ -3,7 +3,7 @@ import { MessageService } from 'primeng/api';
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartFacade, Product, ProductsFacade } from '@shopping-app-ui/store';
-import { Subject, take, takeUntil } from 'rxjs';
+import { Subject, take, takeUntil, filter } from 'rxjs';
 import { SearchPipe } from '../search-pipe.pipe';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -27,6 +27,7 @@ export class IndexComponent implements OnInit {
   totalRecords?: number;
   currentPage = 0;
   rowsPerPage = 6;
+  first = 0;
 
   allProducts:Product[] = [];
 
@@ -39,6 +40,8 @@ export class IndexComponent implements OnInit {
   filteredProducts!: Product[];
   searchForm!:FormGroup;
   filteredProducts$ = this.productFacade.filteredProducts$;
+
+  event!:any;
 
   constructor(private productFacade : ProductsFacade, private el : ElementRef, private renderer: Renderer2,
               private changeDetector: ChangeDetectorRef, private router : Router, private messageService : MessageService,
@@ -113,10 +116,33 @@ export class IndexComponent implements OnInit {
 
       this.products$.pipe(take(1)).subscribe(prods => {
         if(prods){
+          this.totalRecords = prods?.length;
           this.allProducts = prods?.slice(start, start + this.rowsPerPage);
         }
       });
     }
+
+    resetSearchFilter(){
+
+      this.first = 0;
+      this.productFacade.getAllProducts();
+
+
+      this.products$.pipe(takeUntil(this.destroyed$)).subscribe({
+        next: (prods?: Product[]) => {
+          this.totalRecords = prods?.length;
+          this.currentPage = 0;
+          this.rowsPerPage = 6;
+          const start = this.currentPage * this.rowsPerPage;
+
+          this.products$.pipe(take(1)).subscribe(prods => {
+            if(prods){
+              this.allProducts = prods?.slice(start, start + this.rowsPerPage);
+            }
+          });
+        },
+      });
+  }
 
 
     filterProducts(){
@@ -138,6 +164,7 @@ export class IndexComponent implements OnInit {
 
 
   paginate(event:any) {
+    this.first = event.first;
     this.currentPage = event.page;
     setTimeout(()=>{
       this.updateDisplayedUsers();
