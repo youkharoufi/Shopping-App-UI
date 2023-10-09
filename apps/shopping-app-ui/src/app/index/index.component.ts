@@ -146,6 +146,10 @@ export class IndexComponent implements OnInit {
 
 
     filterProducts(){
+      this.first = 0;
+
+      this.currentPage = 0;
+      this.rowsPerPage = 6;
       const start = this.currentPage * this.rowsPerPage;
 
       this.productFacade.filterProducts(this.searchKeyWords);
