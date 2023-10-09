@@ -87,6 +87,6 @@ export class ProductDetailsComponent implements OnInit{
 
     setTimeout(()=>{
       window.location.reload();
-    },4000)
+    },2000)
   }
 }
