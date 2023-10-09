@@ -30,7 +30,7 @@ export class NavbarComponent{
 
   menuDisplay = false;
 
-
+  @Input() searchWords!: string;
   @Output() dataEmitter = new EventEmitter<boolean>();
 
   constructor(private loadingBarService : LoadingService, private router: Router, private accountFacade: AccountFacade, private cdr: ChangeDetectorRef, private fb:FormBuilder){}

@@ -23,6 +23,7 @@ import { PasswordValidatorDirective } from './password-validator.directive';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { ContactComponent } from './Contact/contact.component';
+import { SearchPipe } from './search-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ContactComponent } from './Contact/contact.component';
     ProductDetailsComponent,
     CartPageComponent,
     ContactComponent,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +60,7 @@ import { ContactComponent } from './Contact/contact.component';
       useClass: LoadingBarInterceptor,
       multi: true,
     },
+    SearchPipe
   ],
   bootstrap: [AppComponent],
 })

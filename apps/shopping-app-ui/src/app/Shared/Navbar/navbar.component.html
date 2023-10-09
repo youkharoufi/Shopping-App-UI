@@ -7,18 +7,7 @@
   </a>
     <div class="navbar-inner">
       <a class="brand" ><img src="/assets/themes/images/logo.png" alt="Bootsshop"/></a>
-      <form class="form-inline navbar-search" method="post" action="products.html" >
-      <input style="height:30px" id="srchFld" class="srchTxt" type="text" />
-        <select class="srchTxt">
-        <option>All</option>
-        <option>CLOTHES </option>
-        <option>FOOD AND BEVERAGES </option>
-        <option>HEALTH & BEAUTY </option>
-        <option>SPORTS & LEISURE </option>
-        <option>BOOKS & ENTERTAINMENTS </option>
-      </select>
-        <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
-      </form>
+
       <ul id="topMenu" class="nav pull-right">
      <li class=""><a routerLink="/contact" style="color:rgb(213, 209, 209)">Contact</a></li>
      <li *ngIf="!menuDisplay" class=""><a href="/register">Register</a></li>
@@ -62,20 +51,4 @@
   <p-toast key="loginSuccess" [life]="5000"></p-toast>
   <p-toast key="loginFailure" [life]="5000"></p-toast>
 
-  <!-- <div *ngIf="showLoginErrorToast" class="fixed-error-toast">
-<div class="span4">
-      <div class="alert alert-error">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Oh snap!</strong> Invalid credentials...
-      </div>
-</div>
-  </div>
 
-  <div *ngIf="showLoginSuccessToast" class="fixed-success-toast">
-    <div class="span4">
-          <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Logged In !</strong> You are logged in successfully
-          </div>
-    </div>
-      </div> -->

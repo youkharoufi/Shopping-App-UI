@@ -1,8 +1,11 @@
+import { filterProducts } from './../../../../../libs/store/src/lib/ProductsStore/products.actions';
 import { MessageService } from 'primeng/api';
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartFacade, Product, ProductsFacade } from '@shopping-app-ui/store';
 import { Subject, take, takeUntil } from 'rxjs';
+import { SearchPipe } from '../search-pipe.pipe';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'shopping-app-ui-index',
@@ -31,12 +34,18 @@ export class IndexComponent implements OnInit {
 
   responsiveOptions: any[] | undefined;
 
+  types = ['clothes', 'electronics'];
+  searchKeyWords='';
+  filteredProducts!: Product[];
+  searchForm!:FormGroup;
+  filteredProducts$ = this.productFacade.filteredProducts$;
 
   constructor(private productFacade : ProductsFacade, private el : ElementRef, private renderer: Renderer2,
               private changeDetector: ChangeDetectorRef, private router : Router, private messageService : MessageService,
-              ){}
+              private searchPipe: SearchPipe, private formBuilder: FormBuilder){}
 
   ngOnInit(): void{
+
 
     this.responsiveOptions = [
       {
@@ -102,13 +111,31 @@ export class IndexComponent implements OnInit {
   updateDisplayedUsers() {
     const start = this.currentPage * this.rowsPerPage;
 
+      this.products$.pipe(take(1)).subscribe(prods => {
+        if(prods){
+          this.allProducts = prods?.slice(start, start + this.rowsPerPage);
+        }
+      });
+    }
 
-    this.products$.pipe(take(1)).subscribe(prods => {
-      if(prods){
-        this.allProducts = prods!.slice(start, start + this.rowsPerPage);
-      }
-    });
-  }
+
+    filterProducts(){
+      const start = this.currentPage * this.rowsPerPage;
+
+      this.productFacade.filterProducts(this.searchKeyWords);
+
+
+      this.filteredProducts$.subscribe(prods => {
+        if(prods){
+          this.totalRecords = prods?.length;
+          this.allProducts = prods?.slice(start, start + this.rowsPerPage);
+        }
+      });
+      this.changeDetector.detectChanges();
+
+
+    }
+
 
   paginate(event:any) {
     this.currentPage = event.page;

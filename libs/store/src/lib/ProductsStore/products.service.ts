@@ -30,5 +30,10 @@ export class ProductService {
     return this.http.post<Cart>(this.baseUrl + "products/add-to-cart/"+productId+"/"+userId+"/"+quantity, {productId, userId, quantity});
   }
 
+  filterProductsByName(name: string): Observable<Product[]> {
+
+    return this.http.get<Product[]>(this.baseUrl + "products/filter-by-name/"+name);
+  }
+
 
 }

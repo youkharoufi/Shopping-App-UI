@@ -32,6 +32,18 @@
         </div>
 
 		<h4>Latest Products </h4>
+    <form #searchForm="ngForm" (submit)="filterProducts()" class="form-inline navbar-search">
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input type="text" name="keyWords" #keyWords="ngModel" style="height:30px;" [(ngModel)]="searchKeyWords" pInputText />
+    </span>
+
+
+        <button type="submit" style=" margin-right:8px" id="submitButton" class="btn btn-primary">Go</button>
+        <button type="button" (click)="updateDisplayedUsers()" class="btn btn-success">Reset Filter</button><br>
+
+      </form>
+      <br><br><br><br>
 			  <ul class="thumbnails">
 				<li *ngFor="let product of allProducts" id="latestProducts" class="span3">
 				  <div class="thumbnail">

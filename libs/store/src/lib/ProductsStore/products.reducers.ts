@@ -12,6 +12,7 @@ export interface State extends EntityState<Product> {
   error?: Error;
   product?: Product;
   products?: Product[];
+  filteredProducts?: Product[];
 }
 
 export interface ProductPartialState {
@@ -78,6 +79,19 @@ export const productsReducer = createReducer(
     error,
   })),
 
+  on(ProductsActions.filterProducts, (state, { name }) => ({
+    ...state,
+    loaded: false,
+    error: undefined,
+    name
+  })),
+  on(ProductsActions.filterProductsSuccess, (state, { filteredProducts }) =>
+    ({ ...state, loaded: true, filteredProducts })
+  ),
+  on(ProductsActions.filterProductsFailure, (state, { error }) => ({
+    ...state,
+    error,
+  })),
 
 );
 

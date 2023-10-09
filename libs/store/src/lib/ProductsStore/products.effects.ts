@@ -64,14 +64,6 @@ export class ProductsEffects {
     )
   );
 
-    addToCartError$ = createEffect(() =>
-  this.actions$.pipe(
-    ofType(ProductActions.addToCartFailure),
-    tap(() => {
-      this.messageService.add({key:"addToCartError", severity:'error', summary: 'Error', detail: 'You need to be logged in to add a product to your cart'});
-    })
-  ), { dispatch: false }
-);
 
 addToCartSuccess$ = createEffect(() =>
 this.actions$.pipe(
@@ -81,6 +73,23 @@ this.actions$.pipe(
   })
 ), { dispatch: false }
 );
+
+filterProductsByName$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProductActions.filterProducts),
+      switchMap((action) =>
+        this.backend.filterProductsByName(action.name).pipe(
+          map((filteredProducts: Product[]) =>
+          ProductActions.filterProductsSuccess({ filteredProducts })
+          ),
+          catchError((error) =>
+            of(ProductActions.filterProductsFailure({ error }))
+          )
+
+        )
+      )
+    )
+  );
 
 
 

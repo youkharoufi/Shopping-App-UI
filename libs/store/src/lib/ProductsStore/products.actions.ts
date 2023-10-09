@@ -17,6 +17,10 @@ export enum ProductsActionsTypes {
   ADD_TO_CART = '[Products] Add To Cart',
   ADD_TO_CART_SUCCESS = '[Products/API] Add To Cart Success',
   ADD_TO_CART_ERROR = '[Products/API] Add To Cart Failure',
+
+  FILTER_PRODUCTS = '[Products] Filter Products',
+  FILTER_PRODUCTS_SUCCESS = '[Products/API] Filter Products Success',
+  FILTER_PRODUCTS_ERROR = '[Products/API] Filter Products Failure',
 }
 
 
@@ -61,6 +65,21 @@ export const addToCartSuccess = createAction(
 
 export const addToCartFailure = createAction(
   ProductsActionsTypes.ADD_TO_CART_ERROR,
+  props<{ error: Error | any }>()
+);
+
+export const filterProducts = createAction(
+  ProductsActionsTypes.FILTER_PRODUCTS,
+  props<{ name:string }>()
+);
+
+export const filterProductsSuccess = createAction(
+  ProductsActionsTypes.FILTER_PRODUCTS_SUCCESS,
+  props<{ filteredProducts: Product[] }>()
+);
+
+export const filterProductsFailure = createAction(
+  ProductsActionsTypes.FILTER_PRODUCTS_ERROR,
   props<{ error: Error | any }>()
 );
 

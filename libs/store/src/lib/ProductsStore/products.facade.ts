@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 
-import { addToCart, getAllProducts, getOneProduct } from './products.actions';
+import { addToCart, filterProducts, getAllProducts, getOneProduct } from './products.actions';
 import * as fromProducts from './products.reducers';
 import * as ProductSelectors from './products.selectors';
 
@@ -10,6 +10,7 @@ export class ProductsFacade {
 
   products$ = this.store.pipe(select(ProductSelectors.getAllProducts));
   getOneProduct$ = this.store.pipe(select(ProductSelectors.getOneProduct));
+  filteredProducts$ = this.store.pipe(select(ProductSelectors.getFilteredProducts));
 
   constructor(private store: Store<fromProducts.ProductPartialState>) { }
 
@@ -23,6 +24,10 @@ export class ProductsFacade {
 
   addToCart(productId: number, userId: string, quantity: number) {
     this.store.dispatch(addToCart({ productId, userId, quantity }));
+  }
+
+  filterProducts(name: string) {
+    this.store.dispatch(filterProducts({ name }));
   }
 
 }
